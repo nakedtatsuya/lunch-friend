@@ -1,11 +1,12 @@
 const express = require('express');
+const path = require('path');
 let hbs = require('hbs');
 const {User} = require('./models/user');
 const http = require('http');
 const socketIO = require('socket.io');
 let app = express();
 const port = process.env.PORT || 3000;
-
+const partialsPath = path.join(__dirname, '../views/partials');
 let server = http.createServer(app);
 let io = socketIO(server);
 
@@ -14,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
-hbs.registerPartials(__dirname + '../views/partials');
+hbs.registerPartials(partialsPath);
 
 
 
