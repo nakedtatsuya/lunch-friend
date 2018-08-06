@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
-hbs.registerPartials("/Users/fukuitatsuya/Desktop/lunch-friend" + '/views/partials');
+hbs.registerPartials(__dirname + '../views/partials');
 
 
 
@@ -58,5 +58,5 @@ app.post('/feed', (req, res) => {
 
 
 server.listen(port, () => {
-		console.log(`server start port ${port}`);
+		console.log(`server start port ${__dirname}`);
 });
