@@ -1,11 +1,15 @@
+require('./config/config');
+require('../gulpfile');
+const _ = require('lodash');
 const express = require('express');
 const path = require('path');
 let hbs = require('hbs');
+let {mongoose} = require('./db/mongoose');
 const {User} = require('./models/user');
 const http = require('http');
 const socketIO = require('socket.io');
 let app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const partialsPath = path.join(__dirname, '../views/partials');
 let server = http.createServer(app);
 let io = socketIO(server);
@@ -17,47 +21,26 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 hbs.registerPartials(partialsPath);
 
-
-
-var newUser = new User({
-		name: "tatsuya",
-		age: 22
-});
-
-newUser.save().then(doc => {
-		console.log('saved');
-});
-
-
-
-
-app.get('/', async (req, res) => {
-		let test = await User.findOne({name: "tatsuya"});
+app.get('/', (req, res) => {
+		//let test = await User.findOne({name: "tatsuya"});
 		res.render('home.hbs', {
 				title: 'HOME PAGE',
-				user: test.name
+				user: 'test'
 		});
 });
 
-app.get('/about', (req, res) => {
-		res.render('about.hbs', {
-				title: 'about'
+app.get('/collect', (req, res) => {
+		res.render('form/collect.hbs', {
+				title: 'collect'
 		});
 });
 
-app.get('/feed/:location', (req, res) => {
+app.get('/find', (req, res) => {
 		res.render('feed.hbs', {
-				title: req.params.location
+				title: 'feed'
 		});
 });
-
-app.post('/feed', (req, res) => {
-		res.redirect(`/feed/${req.body.location}`);
-});
-
-
-
 
 server.listen(port, () => {
-		console.log(`server start port ${__dirname}`);
+		console.log(`server start port ${port}`);
 });

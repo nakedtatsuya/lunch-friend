@@ -1,0 +1,12 @@
+{
+  "test":{
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/LunchAppTest",
+    "JWT_SECRET": "dfjiorroijgrijgmvlfoi3"
+  },
+  "development": {
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/LunchApp",
+    "JWT_SECRET": "dfjiorroijgrijgmvlfoi4"
+  }
+}

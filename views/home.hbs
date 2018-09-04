@@ -1,28 +1,18 @@
 {{> _head}}
 
-<div class="main">
-    <div class="container">
+<main role="main">
 
-        <div class="section-title">
-            <h1>lunch friend</h1>
-            <h1>lunch {{user}}</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Business Lunch を楽しもう</h1>
+            <p class="lead text-muted">いろんな人と話したい人、お昼代を節約したい人、美味しいお店を見つけたい人、お昼の時間を自由に<br>毎日のランチにワクワクを</p>
+            <p>
+                <a href="/collect" class="btn c-round-btn c-round-btn--blue">ランチに誘う</a>
+                <a href="/find" class="btn c-round-btn c-round-btn--red">ランチ仲間を探す</a>
+            </p>
         </div>
-        <div class="centered-form__form">
-            <form action="/feed" method="post">
-                <div class="form-field">
-                    <select class="select-location" name="location">
-                        <option value="roppongi">六本木</option>
-                        <option value="asakusa">浅草</option>
-                    </select>
-                </div>
-                <div class="button-block">
-                    <button class="join-button">Join</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+    </section>
 
-
+</main>
 
 {{> _footer}}
