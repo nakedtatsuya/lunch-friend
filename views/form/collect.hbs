@@ -2,23 +2,23 @@
 <div class="container">
     <div class="col-md-8 order-md-1 container-form">
         <h3 class="mb-3 section-title">ランチ募集フォーム</h3>
-        <form class="needs-validation" novalidate="" action="/collects" method="post">
+        <form class="needs-validation" novalidate="" action="/collect" method="post">
             <div class="mb-3">
                 <label for="station">最寄駅</label>
-                <input type="text" class="form-control" id="station" placeholder="六本木">
+                <input type="text" name="station" class="form-control" id="station" placeholder="六本木" required>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="store">お店</label>
-                    <input type="text" class="form-control" id="store" placeholder="" required="">
+                    <input type="text" name="store" class="form-control" id="store" placeholder="" required>
                     <div class="invalid-feedback">
                         Name on card is required
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="link">参考リンク</label>
-                    <input type="text" class="form-control" id="link" placeholder="" required="">
+                    <input type="text" name="link" class="form-control" id="link" placeholder="" required="">
                     <div class="invalid-feedback">
                         Credit card number is required
                     </div>
@@ -27,7 +27,7 @@
 
             <div class="col-md-4 mb-3">
                 <label for="num">募集人数</label>
-                <select class="custom-select d-block w-100" id="num" required="">
+                <select name="num" class="custom-select d-block w-100" id="num" required>
                     <option value="1">1人</option>
                     <option value="2">2人</option>
                     <option value="3">3人</option>
@@ -38,14 +38,14 @@
             <div class="col-md-8 mb-6">
                 <label for="time">開始時間目安</label>
                 <div class="d-block">
-                    <select class="custom-select d-inline-block w-40 form-control" id="time" required="">
+                    <select name="time" class="custom-select d-inline-block w-40 form-control" id="time" required>
                         <option value="11">11時</option>
                         <option value="12">12時</option>
                         <option value="13">13時</option>
                         <option value="14">14時</option>
                     </select>
 
-                    <select class="custom-select d-inline-block w-40 form-control" id="minute" required="">
+                    <select name="minute" class="custom-select d-inline-block w-40 form-control" id="minute" required>
                         <option value="00">00分</option>
                         <option value="15">15分</option>
                         <option value="30">30分</option>
@@ -55,12 +55,13 @@
             </div>
 
             <div class="form-group form-textarea">
-                <label for="exampleFormControlTextarea1">募集コメント</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="comment">募集コメント</label>
+                <textarea name="comment" class="form-control" id="comment" rows="3" required></textarea>
             </div>
 
             <button class="btn btn-primary btn-lg form-submit" type="submit">募集を開始する</button>
             <div class="clear"></div>
         </form>
     </div>
-</div>{{> _footer}}
+</div>
+{{> _footer}}

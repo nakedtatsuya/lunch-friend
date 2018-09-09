@@ -6,6 +6,7 @@ const path = require('path');
 let hbs = require('hbs');
 let {mongoose} = require('./db/mongoose');
 const {User} = require('./models/user');
+const {Collect} = require('./models/collect');
 const http = require('http');
 const socketIO = require('socket.io');
 let app = express();
@@ -20,6 +21,14 @@ app.set('view engine', 'hbs');
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
 hbs.registerPartials(partialsPath);
+hbs.registerHelper('getPostTime', function(timestamp) {
+		const now = new Date().getTime();
+		const created_at = timestamp.getTime();
+		const lastTime = Math.ceil((now - created_at) / 1000 / 60);
+		return new hbs.SafeString(
+				lastTime
+		);
+});
 
 app.get('/', (req, res) => {
 		//let test = await User.findOne({name: "tatsuya"});
@@ -35,11 +44,25 @@ app.get('/collect', (req, res) => {
 		});
 });
 
-app.get('/find', (req, res) => {
+app.post('/collect', async (req, res) => {
+		const body = _.pick(req.body, ['station', 'store', 'link', 'num', 'time', 'minute', 'comment']);
+		let collect = new Collect(body);
+		await collect.save().then(cllect => {
+
+		}).catch(e => {
+				
+		});
+		res.redirect(302, "/find");
+});
+
+app.get('/find', async (req, res) => {
+		let collects = await Collect.find();
 		res.render('feed.hbs', {
-				title: 'feed'
+				title: 'feed',
+				collects
 		});
 });
+
 
 server.listen(port, () => {
 		console.log(`server start port ${port}`);
