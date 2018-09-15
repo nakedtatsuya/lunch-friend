@@ -12,12 +12,12 @@ gulp.task('scss', function () {
         .pipe(sass({
             outputStyle: 'expanded'
         }))
-        .pipe(gulp.dest('./build/css/'));
+        .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('browsersync', function() {
     browserSync.init({
-        files: ['public/**/*.*', 'views/**/*.*'], // BrowserSyncにまかせるファイル群
+        files: ['./public/css/style.css','public/image/*'], // BrowserSyncにまかせるファイル群
         proxy: 'http://localhost:3000',  // express の動作するポートにプロキシ
         port: 4000,  // BrowserSync は 4000 番ポートで起動
         open: false  // ブラウザ open しない
@@ -25,7 +25,7 @@ gulp.task('browsersync', function() {
 });
 
 gulp.task('sass-watch', ['scss'], function(){
-    var watcher = gulp.watch('./public/css/*.scss', ['scss']);
+    let watcher = gulp.watch('./public/css/*.scss', ['scss']);
     watcher.on('change', function(event) {
     });
 });
@@ -33,11 +33,10 @@ gulp.task('sass-watch', ['scss'], function(){
 gulp.task('serve', ['browsersync'], function () {
     nodemon({
         script: './server/server.js',
-        ext: 'js html css',
+        ext: 'js css hbs',
         ignore: [  // nodemon で監視しないディレクトリ
             'node_modules/*',
-            'build/*',
-            'public/*',
+            'public/*'
         ],
         env: {
             'NODE_ENV': 'test'
@@ -45,12 +44,13 @@ gulp.task('serve', ['browsersync'], function () {
         stdout: false  // Express の再起動時のログを監視するため
     }).on('readable', function() {
         this.stdout.on('data', function(chunk) {
-            if (/^Express\ server\ listening/.test(chunk)) {
+            let std =process.stdout.write(chunk);
+            if (std) {
                 // Express の再起動が完了したら、reload() でBrowserSync に通知。
                 // ※Express で出力する起動時のメッセージに合わせて比較文字列は修正
                 reload();
             }
-            process.stdout.write(chunk);
+
         });
         this.stderr.on('data', function(chunk) {
             process.stderr.write(chunk);
@@ -58,7 +58,7 @@ gulp.task('serve', ['browsersync'], function () {
     });
 });
 
-gulp.task('default', ['serve','sass-watch']);
+gulp.task('default', ['sass-watch','serve']);
 
 
 
