@@ -1,3 +1,64 @@
+.bbb {
+  background-color: #7994a7;
+}
+
+.modal-login {
+  width: 380px !important;
+  padding: 25px;
+  margin: 0 auto;
+}
+
+.modal-login .modal-content .modal-body a.google-auth {
+  color: #444444;
+  font-size: 1em;
+  display: block;
+  height: 45px;
+  padding-top: 8px;
+  padding-left: 5px;
+  padding-bottom: 8px;
+  background-color: #fff;
+  text-align: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(41, 48, 59, 0.24), 0 0 2px 0 rgba(41, 48, 59, 0.12);
+  border: 1px solid #dedfe0;
+}
+
+.modal-login .modal-content .modal-body a.google-auth img {
+  width: 30px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  object-fit: contain;
+}
+
+.modal-login .modal-content .modal-body input {
+  padding-left: 30px;
+  padding-top: 8px;
+  height: 45px;
+}
+
+.modal-login .modal-content .modal-body i.errspan {
+  float: left;
+  margin-left: 8px;
+  margin-top: -38px;
+  position: relative;
+  z-index: 2;
+  color: #dedfe0;
+}
+
+.modal-login .modal-content .modal-body button {
+  height: 45px;
+}
+
+.modal-login .modal-content .modal-body a {
+  font-size: 100%;
+}
+
+.modal-login .modal-content .modal-footer {
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none !important;
 }

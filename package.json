@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
+    "test": "NODE_ENV=test nodemon server/server.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "engones": {
@@ -15,14 +15,21 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "gulp-nodemon": "^2.2.1",
     "hbs": "^4.0.1",
     "lodash": "^4.17.10",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.6",
     "node-sass": "^4.9.2",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^2.1.1",
-    "validator": "^10.5.0"
+    "validator": "^10.7.1"
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
