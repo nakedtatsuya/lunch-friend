@@ -149,7 +149,7 @@ app.get('/auth/google', passport.authenticate('google', {
 //google認証後callback先
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-            failureRedirect: '/login',  // 失敗したときの遷移先
+            failureRedirect: '/',  // 失敗したときの遷移先
             successRedirect: '/collect',  // 成功したときの遷移先
         },
     ));
