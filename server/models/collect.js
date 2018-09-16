@@ -10,7 +10,8 @@ let CollectSchema = new mongoose.Schema({
 				required: true
 		},
 link: {
-				type: String
+				type: String,
+		  required: true
 		},
 		num: {
 				type: Number,

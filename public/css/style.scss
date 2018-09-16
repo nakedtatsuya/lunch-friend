@@ -1,6 +1,33 @@
 @import "home";
 @import "header";
 @import "feed";
+@import "error";
+
+body {
+  color: #7994a7;
+  font-family: "AvenirNext-Regular", "Lato", "Hirago KakuGothic ProN", sans-serif;
+  font-size: 0.875rem;
+}
+
+html {
+  font: 100%/1.5 "Lato", "Hiragino Maru Gothic Pro", "Meiryo UI", Meiryo, "MS PGothic", sans-serif;
+  color: #5876a3;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.71429;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #16325c;
+  background: #8be0e6;
+}
 
 a {
   text-decoration: none!important;
@@ -18,41 +45,9 @@ label {
   float: right;
 }
 
-.search-form {
-  margin: 0 auto;
-}
-
-.search-form-block {
-  padding-bottom: 30px;
-}
-
-.search-header-block {
-  display: block;
-  margin-top: 15px;
-  height: 40px;
-  border-top: 1px solid #e5e5e5;
-}
-
-.search-header {
-  text-align: center;
-}
-
-.search-header a {
-  padding: 10px 14px!important;
-}
-
-.container-form {
-  margin: 0 auto;
-  padding: 30px 0;
-  background-color: rgba(255,166,28,0.7);
-  border-radius: 28px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.6);
-}
-
 .section-title {
   text-align: center;
 }
-
 
 .w-40 {
   width: 40%!important;
@@ -157,35 +152,4 @@ div {
   letter-spacing: .07em;
   line-height: 1.71429;
 }
-body {
-  color: #7994a7;
-  font-family: "AvenirNext-Regular", "Lato", "Hirago KakuGothic ProN", sans-serif;
-}
-body {
-  font-size: 0.875rem;
-}
-html {
-  font: 100%/1.5 "Lato", "Hiragino Maru Gothic Pro", "Meiryo UI", Meiryo, "MS PGothic", sans-serif;
-  color: #5876a3;
-  -webkit-tap-highlight-color: transparent;
-  line-height: 1.71429;
-}
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-*:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-::selection {
-  color: #16325c;
-  background: #8be0e6;
-}
+

@@ -1,5 +1,5 @@
-const crypto = require('crypto')
-const config = require('../config/config.json')
+const crypto = require('crypto');
+const config = require('../config/config.json');
 const key = config.key;
 // ログインされているか判別
 exports.checkAuthentication = function(req,res,next){
@@ -9,7 +9,7 @@ exports.checkAuthentication = function(req,res,next){
     } else{
         res.redirect("/login");
     }
-}
+};
 
 //ハッシュ化
 exports.gethash = function(password){
@@ -26,7 +26,7 @@ exports.encrypt = function(text){
     let crypted = cipher.update(text,'utf8','hex');
     crypted += cipher.final('hex');
     return crypted;
-}
+};
 
 //復元
 exports.decrypt = function(text){
@@ -34,5 +34,5 @@ exports.decrypt = function(text){
     let dec = decipher.update(text,'hex','utf8');
     dec += decipher.final('utf8');
     return dec;
-}
+};
 
