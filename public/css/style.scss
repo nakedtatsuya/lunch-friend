@@ -1,5 +1,6 @@
 @import "home";
 @import "header";
+@import "feed";
 
 a {
   text-decoration: none!important;
@@ -91,17 +92,18 @@ label {
 
 .c-round-btn--red {
   background-color: rgba(255, 137, 54, 0.8);
+  &:hover {
+    background-color: rgba(255, 137, 54, 1);
+    color: white;
+  }
+  &:active {
+    box-shadow: none;
+  }
 }
 
 
 .c-round-btn--blue:hover {
   background-color: rgba(124, 185, 252,1);
-  color: white;
-}
-
-
-.c-round-btn--red:hover {
-  background-color: rgba(255, 137, 54, 1);
   color: white;
 }
 

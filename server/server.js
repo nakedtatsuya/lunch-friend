@@ -178,7 +178,7 @@ app.post('/collect', async (req, res) => {
 });
 
 app.get('/find', async (req, res) => {
-    let collects = await Collect.find();
+    let collects = await Collect.find().sort( { created_at: -1 } );
     res.render('feed.hbs', {
         title: 'feed',
         collects
