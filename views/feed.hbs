@@ -19,21 +19,37 @@
             </div>
             <div class="row">
                 {{#each collects}}
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            user profile image.....
-                            <div class="card-body">
-                                <p class="card-text">{{station}}</p>
-                                <p class="card-text"><a href="{{link}}">{{store}}</a></p>
-                                <p class="card-text">{{comment}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">{{time}}:{{minute}}</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">{{num}}</button>
+                    <div class="col-md-7 feed-box">
+                        <div class="card mb-4 box-shadow feed-inner-box">
+                            <div class="post-minute"><small class="text-muted">{{getPostTime created_at}} mins</small></div>
+
+                            <div class="feed-head">
+                                <div class="profile-block">
+                                    <div class="profile-inner-block">
+                                        <img class="profile-image" src="image/profile.jpg" />
+                                        <p class="feed-profile">user name...</p>
+                                        <p>職種： user job...</p>
                                     </div>
-                                    <small class="text-muted">{{getPostTime created_at}} mins</small>
+                                </div>
+
+                                <div class="feed-right">
+                                    <div class="inner-feed-right">
+                                        <h5><i class="fas fa-map-marker-alt"></i> {{station}}</h5>
+                                        <h5><i class="fas fa-clock"></i> {{time}}:{{minute}}〜</h5>
+                                        <h5><i class="fas fa-flag"></i> {{num}}人</h5>
+                                        <h5><i class="fas fa-utensils"></i> <a href="{{link}}" target="_blank">{{store}}</a></h5>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="card-body feed-body">
+
+                                <h5>コメント</h5>
+                                <p class="card-text">{{comment}}</p>
+                            </div>
+
+                            <a class="btn feed-btn c-round-btn--red">参加</a>
+
                         </div>
                     </div>
                 {{/each}}
