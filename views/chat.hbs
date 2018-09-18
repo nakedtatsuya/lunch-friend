@@ -1,0 +1,15 @@
+{{> _head}}
+<p>気軽にメッセージを送ろう！</p>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    socket.on('connect', () => {
+    		console.log('Connected Server!!');
+    });
+
+    socket.on('disconnect', () => {
+            console.log('Disconnect Server!!');
+    });
+</script>
+{{> _footer}}

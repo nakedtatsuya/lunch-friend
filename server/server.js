@@ -61,6 +61,18 @@ app.use('/collect', collect);
 //募集一覧ページ
 app.use('/find', find);
 
+app.get('/chat', (req, res) => {
+    io.on('connection', (socket) => {
+       console.log('connected!!');
+       socket.on('disconnect', () => {
+           console.log('server disconnected!!')
+       })
+    });
+    res.render('chat.hbs', {
+
+    });
+});
+
 server.listen(port, () => {
     console.log(`server start port ${port}`);
 });
