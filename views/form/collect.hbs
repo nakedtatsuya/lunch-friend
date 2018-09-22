@@ -2,25 +2,28 @@
 <div class="container">
     <div class="col-md-8 order-md-1 container-form">
         <h3 class="mb-3 section-title">ランチ募集フォーム</h3>
-        <form class="needs-validation" novalidate="" action="/collect" method="post">
+        <form class="needs-validation {{validClass}}" novalidate action="/collect" method="post">
             <div class="mb-3">
-                <label for="station">最寄駅</label>
-                <input type="text" name="station" class="form-control" id="station" placeholder="六本木" required>
+                <label for="station">場所</label>
+                <input type="text" name="station" class="form-control" id="station" placeholder="六本木" value="{{stationValue}}" required>
+                <div class="error-message">
+                    {{station}}
+                </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="store">お店</label>
-                    <input type="text" name="store" class="form-control" id="store" placeholder="" required>
-                    <div class="invalid-feedback">
-                        Name on card is required
+                    <input type="text" name="store" class="form-control" id="store" placeholder="お店" value="{{storeValue}}" required>
+                    <div class="error-message">
+                        {{store}}
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="link">参考リンク</label>
-                    <input type="text" name="link" class="form-control" id="link" placeholder="" required="">
-                    <div class="invalid-feedback">
-                        Credit card number is required
+                    <input type="text" name="link" class="form-control" id="link" placeholder="link" value="{{linkValue}}" required>
+                    <div class="error-message">
+                        {{link}}
                     </div>
                 </div>
             </div>
@@ -56,7 +59,10 @@
 
             <div class="form-group form-textarea">
                 <label for="comment">募集コメント</label>
-                <textarea name="comment" class="form-control" id="comment" rows="3" required></textarea>
+                <textarea name="comment" class="form-control" id="comment" rows="3" required>{{commentValue}}</textarea>
+                <div class="error-message">
+                    {{comment}}
+                </div>
             </div>
 
             <button class="btn btn-primary btn-lg form-submit" type="submit">募集を開始する</button>
