@@ -14,10 +14,10 @@ exports.checkAuthentication = function(req,res,next){
 //ハッシュ化
 exports.gethash = function(password){
     let sha256 = crypto.createHmac("sha256",password);
-    sha256.update(password);;
+    sha256.update(password);
     let hash = sha256.digest('hex');
     //console.log(hash.length)
-    return hash
+    return hash.toString()
 }
 
 //暗号化
