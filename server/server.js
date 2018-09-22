@@ -56,25 +56,25 @@ passport.deserializeUser(function (obj, done) {
 passport.use(
     "local-login",
     new LocalStrategy({
-        usernameField: "username",
+        usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
-    }, function (req, username, password, done) {
+    }, function (req, email, password, done) {
         process.nextTick(() => {
-            console.log(username, "username");
-
-            User.findOne({name: username}, function (error, user) {
+            console.log(email, "email");
+            User.findOne({email: email}, function (error, user) {
                 const pass = serverController.gethash(password);
                 console.log(user, "db_username")
-
                 if (error) {
                     return done(error);
                 }
                 if (!user) {
-                    return done(null, false, {message: 'ユーザーIDが正しくありません。'});
+                    console.log("missID");
+                    return done(null, false, req.flash('err', 'ユーザーIDが正しくありません。'),req.flash('Flag_Signin',true));
                 }
                 if (user.password !== pass) {
-                    return done(null, false, {message: 'パスワードが正しくありません。'});
+                    console.log("password");
+                    return done(null, false, req.flash('err', 'パスワードが正しくありません。'),req.flash('Flag_Signin',true));
                 }
                 return done(null, user);
             });
@@ -86,7 +86,7 @@ passport.use(new GoogleStrategy({
     clientID: config.googleAPI.clientID,
     clientSecret: config.googleAPI.clientSecret,
     callbackURL: config.googleAPI.callbackURL
-}, function (accessToken, refreshToken, profile, done) {
+}, function (req, refreshToken, profile, done) {
     // ここで profile を確認して結果を返す
     console.log(profile);
     console.log(profile.emails[0].value);
@@ -95,7 +95,7 @@ passport.use(new GoogleStrategy({
             return done(error);
         }
         if (!user) {
-            return done(null, false, {message: '登録されていないgoogleアカウントです'});
+            return done(null, false, req.flash('err','登録されていないgoogleアカウントです'),req.flash('Flag_Signin',true));
         }
         return done(null, user);
     });
@@ -116,34 +116,30 @@ app.use(session({secret: "some salt", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.get('/', (req, res) => {
     //let test = await User.findOne({name: "tatsuya"});
-    res.render('home.hbs',
+    res.render('home',
         {
             title: 'HOME PAGE',
-            user: 'test'
+            user: 'test',
+            err: req.flash('err')[0],
+            Flag_Signin: req.flash('Flag_Signin')[0]
         });
-});
-
-//ログイン
-app.get('/login', (req, res) => {
-    res.render('login.hbs', {
-        title: 'login',
-        message: req.flash('error')
-    });
 });
 
 app.post('/login', passport.authenticate(
     'local-login', {
         successRedirect: "/collect",
-        failureRedirect: "/login",
+        failureRedirect: "/",
         failureFlash: true
     })
 );
 
 //google認証
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile','email']
+    scope: ['profile','email'],
+    failureFlash: true
 }));
 
 //google認証後callback先
@@ -157,6 +153,29 @@ app.get('/auth/google/callback',
 app.get('/logout', (req, res) => {
     res.render('logout.hbs', {
         title: 'logout'
+    });
+});
+
+//会員登録
+app.post('/signup', (req, res) => {
+    const pass = serverController.gethash(req.body.password);
+    //console.log(req.body.email);
+    //const hash_mail = serverController.encrypt(req.body.email)
+    //console.log(hash_mail)
+    let user = new User({name:req.body.username,password:pass,email:req.body.email,age:req.body.age});
+    user.save(function(err){
+        if(err){
+            console.log(err);
+            res.render('home',{
+                err: err,
+                Flag_Signup: true
+            });
+        }
+        else{
+            res.render('home',{
+                Flag_finish: true
+            });
+        }
     });
 });
 
