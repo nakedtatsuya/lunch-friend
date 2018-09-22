@@ -2,22 +2,18 @@ const mongoose = require('mongoose');
 let moment = require('moment');
 const now = moment();
 
-let CollectSchema = new mongoose.Schema({
+let MessageSchema = new mongoose.Schema({
 		_user_id: {
 				type: mongoose.Schema.Types.ObjectId,
 				required: true
 		},
-		station: {
+		message: {
 				type: String,
 				required: true
 		},
-		store: {
+		link: {
 				type: String,
 				required: true
-		},
-link: {
-				type: String,
-		  required: true
 		},
 		num: {
 				type: Number,
@@ -41,6 +37,6 @@ link: {
 		}
 });
 
-const Collect = mongoose.model('Collect', CollectSchema);
+const Message = mongoose.model('Message', MessageSchema);
 
-module.exports = {Collect};
+module.exports = {Message};

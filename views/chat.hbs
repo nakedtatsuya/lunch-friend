@@ -1,15 +1,23 @@
 {{> _head}}
-<p>気軽にメッセージを送ろう！</p>
+{{> _header}}
+<div class="chat">
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users">
+        </div>
+    </div>
 
+    <div class="chat__main">
+        <ol id="message" class="chat__messages"></ol>
+        <div class="chat__footer">
+            <form id="message-form">
+                <input type="text" id="message-box" placeholder="Message" name="message" autocomplete="off" contenteditable autofocus/>
+                <button id="send-btn" disabled>送信</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 <script src="/socket.io/socket.io.js"></script>
-<script>
-    const socket = io();
-    socket.on('connect', () => {
-    		console.log('Connected Server!!');
-    });
-
-    socket.on('disconnect', () => {
-            console.log('Disconnect Server!!');
-    });
-</script>
+<script src="/js/chat.js"></script>
 {{> _footer}}

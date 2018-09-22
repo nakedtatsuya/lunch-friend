@@ -2,6 +2,7 @@
 @import "header";
 @import "feed";
 @import "error";
+@import "chat";
 
 body {
   color: #7994a7;
@@ -29,6 +30,10 @@ html {
   background: #8be0e6;
 }
 
+main {
+  padding-top: 70px;
+}
+
 a {
   text-decoration: none!important;
 }
@@ -39,6 +44,10 @@ label {
 
 .clear {
   clear: both;
+}
+
+.main {
+
 }
 
 .form-submit {
@@ -137,7 +146,6 @@ label {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-user agent stylesheet
 div {
   display: block;
 }

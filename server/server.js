@@ -1,5 +1,6 @@
 require('./config/config');
 require('../gulpfile');
+const {generateMessage} = require('./config/helper');
 const home = require('./route/home');
 const collect = require('./route/collect');
 const find = require('./route/find');
@@ -62,15 +63,21 @@ app.use('/collect', collect);
 app.use('/find', find);
 
 app.get('/chat', (req, res) => {
-    io.on('connection', (socket) => {
-       console.log('connected!!');
-       socket.on('disconnect', () => {
-           console.log('server disconnected!!')
-       })
-    });
     res.render('chat.hbs', {
-
+        title: "chat"
     });
+});
+
+io.on('connection', (socket) => {
+		console.log('connected!!');
+		socket.on('disconnect', () => {
+				console.log('server disconnected!!');
+		});
+
+		socket.on("createMessage", (message) => {
+				console.log(message);
+				io.emit("newMessage", generateMessage(message.from, message.text));
+		});
 });
 
 server.listen(port, () => {
