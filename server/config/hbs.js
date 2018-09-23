@@ -18,7 +18,7 @@ hbs.registerHelper('getPostTime', function (timestamp) {
 				if(houre >= 24 && houre < 168) {
 						postString = Math.floor(houre / 24).toString() + "日前";
 				}else if(houre >= 168) {
-						postString = timestamp.format("YYYY/M/DD");
+						postString = moment(timestamp).format("YYYY/M/DD");
 				}
 		}else {
 				postString = (minute % 60).toString() + "分前";
