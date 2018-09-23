@@ -1,5 +1,5 @@
 require('./config/config');
-require('../gulpfile');
+// require('../gulpfile');
 let {mongoose} = require('./db/mongoose');
 const {generateMessage} = require('./config/helper');
 const home = require('./route/home');
