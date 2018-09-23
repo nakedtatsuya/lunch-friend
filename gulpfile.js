@@ -45,8 +45,7 @@ gulp.task('serve', ['browsersync'], function () {
         stdout: false  // Express の再起動時のログを監視するため
     }).on('readable', function () {
         this.stdout.on('data', function (chunk) {
-            let std = process.stdout.write(chunk);
-            if (std) {
+            if (chunk.toString('utf8').match("server start port 3000")) {
                 // Express の再起動が完了したら、reload() でBrowserSync に通知。
                 // ※Express で出力する起動時のメッセージに合わせて比較文字列は修正
                 reload();

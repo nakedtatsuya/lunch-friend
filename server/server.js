@@ -6,6 +6,7 @@ const find = require('./route/find');
 const login = require('./route/login');
 const logout = require('./route/logout');
 const auth = require('./route/auth');
+const signup = require('./route/signup');
 let {mongoose} = require('./db/mongoose');
 const express = require('express');
 const path = require('path');
@@ -49,6 +50,8 @@ app.use(passport.session());
 app.use('/', home);
 //ログイン
 app.use('/login', login);
+//登録
+app.use('/signup', signup);
 //ログアウト
 app.use('/logout', logout);
 //google認証
