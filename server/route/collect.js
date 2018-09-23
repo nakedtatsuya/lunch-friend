@@ -3,7 +3,8 @@ let router = express.Router();
 let {validate, constraints} = require('../config/validate');
 const _ = require('lodash');
 const {Collect} = require('../models/collect');
-router.get('/', (req, res) => {
+let serverController = require('../controller/serverController');
+router.get('/',serverController.checkAuthentication, (req, res) => {
 		res.render('form/collect.hbs', {
 				title: 'collect'
 		});

@@ -3,10 +3,7 @@ require('../gulpfile');
 const home = require('./route/home');
 const collect = require('./route/collect');
 const find = require('./route/find');
-const login = require('./route/login');
-const logout = require('./route/logout');
 const auth = require('./route/auth');
-const signup = require('./route/signup');
 let {mongoose} = require('./db/mongoose');
 const express = require('express');
 const path = require('path');
@@ -16,7 +13,6 @@ let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let flash = require("connect-flash");
 let session = require("express-session");
-let User = require('./models/user');
 const http = require('http');
 let passport = require('./config/passport');
 const socketIO = require('socket.io');
@@ -24,7 +20,8 @@ let app = express();
 const port = process.env.PORT;
 let server = http.createServer(app);
 let io = socketIO(server);
-
+app.use(bodyParser());
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'hbs');
@@ -32,15 +29,6 @@ app.use(flash());
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
 
-// ログインされているか判別
-function checkAuthentication(req, res, next) {
-    if (req.isAuthenticated()) {
-        //req.isAuthenticated() will return true if user is logged in
-        next();
-    } else {
-        res.redirect("/login");
-    }
-}
 
 // passport設定
 app.use(session({secret: "some salt", resave: true, saveUninitialized: true}));
@@ -48,12 +36,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', home);
-//ログイン
-app.use('/login', login);
-//登録
-app.use('/signup', signup);
-//ログアウト
-app.use('/logout', logout);
 //google認証
 app.use('/auth', auth);
 //募集アクション
