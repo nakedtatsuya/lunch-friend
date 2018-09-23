@@ -5,7 +5,7 @@ const now = moment();
 let CollectSchema = new mongoose.Schema({
 		_user_id: {
 				type: mongoose.Schema.Types.ObjectId,
-				required: true
+				required: false
 		},
 		station: {
 				type: String,

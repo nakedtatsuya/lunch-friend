@@ -1,5 +1,6 @@
 require('./config/config');
-// require('../gulpfile');
+require('../gulpfile');
+let {mongoose} = require('./db/mongoose');
 const {generateMessage} = require('./config/helper');
 const home = require('./route/home');
 const collect = require('./route/collect');
@@ -8,7 +9,6 @@ const login = require('./route/login');
 const logout = require('./route/logout');
 const auth = require('./route/auth');
 const signup = require('./route/signup');
-let {mongoose} = require('./db/mongoose');
 const express = require('express');
 const path = require('path');
 let hbs = require('./config/hbs');
