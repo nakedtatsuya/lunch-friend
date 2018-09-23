@@ -5,7 +5,19 @@
   z-index: 999999;
   width: 100%;
   box-shadow: 0 1px 3px rgba(160,166,179,0.3);
+
+  .header-btn {
+    display: block;
+    height: 70px;
+    color: #343a40;
+    background-color: rgba(0,0,0,0);
+    padding: 0!important;
+    &:hover {
+      border-bottom: 1px solid #343a40;
+    }
+  }
 }
+
 
 .modal-login{
   width: 420px!important;

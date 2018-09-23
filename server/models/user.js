@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const UserSchema = new mongoose.Schema({
+		uid: {
+				type: Number
+		},
 		name: {
 				type: String
 		},
@@ -19,21 +22,19 @@ const UserSchema = new mongoose.Schema({
 						message: '{VALUE} is not a valid email'
 				}
 		},
+		i_con: {
+				type: String
+		},
 		password: {
 				type: String,
 				require: true,
 				minlength: 6
 		},
-		tokens: [{
-				access: {
-						type: String,
-						require: true
-				},
-				token: {
-						type: String,
-						require: true
-				}
-		}]
+		provider: {
+				type: String,
+				enum: ['google', 'facebook', 'twitter', 'local']
+		},
+		collects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Collect' }]
 });
 
 let User = mongoose.model('User', UserSchema,'User');

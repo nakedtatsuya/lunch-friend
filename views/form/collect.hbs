@@ -1,10 +1,11 @@
 {{> _head}}
 {{> _header}}
 <main>
-<div class="container">
+<div class="container container-box">
     <div class="col-md-8 order-md-1 container-form">
-        <h3 class="mb-3 section-title">ランチ募集フォーム</h3>
+        <h3 class="mb-3 section-title">ランチ募集フォーム{{email}}</h3>
         <form class="needs-validation {{validClass}}" novalidate action="/collect" method="post">
+            <input type="hidden" name="user" value="{{user._id}}">
             <div class="mb-3">
                 <label for="station">場所</label>
                 <input type="text" name="station" class="form-control" id="station" placeholder="六本木" value="{{stationValue}}" required>

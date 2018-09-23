@@ -1,19 +1,24 @@
 {{> _head}}
 {{> _header}}
-<main role="main">
 
-    <section class="jumbotron text-center">
+<div class="home-container">
+    <section class="jumbotron text-center home-contents">
         <div class="container">
-            <h1 class="jumbotron-heading">Business Lunch を楽しもう</h1>
-            <p class="lead text-muted">いろんな人と話したい人、お昼代を節約したい人、美味しいお店を見つけたい人、お昼の時間を自由に<br>毎日のランチにワクワクを</p>
-            <p>
-                <a href="/collect" class="btn c-round-btn c-round-btn--blue">ランチに誘う</a>
-                <a href="/find" class="btn c-round-btn c-round-btn--red">ランチ仲間を探す</a>
-            </p>
+            <h1 class="jumbotron-heading home-title">Business Lunch を楽しもう</h1>
+            <p class="lead text-muted home-sub-title">いろんな人と話したい人、お昼代を節約したい人、美味しいお店を見つけたい人、お昼の時間を自由に<br>毎日のランチにワクワクを</p>
+            <div class="btn-container">
+                {{#if user}}
+                <a href="/collect" class="btn c-round-btn c-round-btn--blue home-btn">ランチに誘う</a>
+                <a href="/find" class="btn c-round-btn c-round-btn--red home-btn">ランチ仲間を探す</a>
+                {{else}}
+                <button type="button" class="btn home-btn sign-up-btn" data-toggle="modal" data-target="#loginModal">
+                    登録してはじめる
+                </button>
+                {{/if}}
+
+            </div>
         </div>
     </section>
-</main>
-
-
+</div>
 
 {{> _footer}}

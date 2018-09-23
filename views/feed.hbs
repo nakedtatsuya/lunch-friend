@@ -27,7 +27,7 @@
                             <div class="feed-head">
                                 <div class="profile-block">
                                     <div class="profile-inner-block">
-                                        <img class="profile-image" src="image/profile.jpg" />
+                                        <img class="profile-image" src="{{user.i_con}}" />
                                         <p class="feed-profile">user name...</p>
                                         <p>職種： user job...</p>
                                     </div>
@@ -48,7 +48,7 @@
                                 <h5>コメント</h5>
                                 <p class="card-text">{{comment}}</p>
                             </div>
-                            <a href="/chat" class="btn feed-btn c-round-btn--red">参加</a>
+                            <a href="/chat/{{user._id}}" class="btn feed-btn c-round-btn--red">参加</a>
                         </div>
                     </div>
                 {{/each}}

@@ -2,15 +2,18 @@ let express = require('express');
 let router = express.Router();
 let {validate, constraints} = require('../config/validate');
 const _ = require('lodash');
+const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/serverController');
 const {Collect} = require('../models/collect');
-router.get('/', (req, res) => {
+
+router.get('/', checkAuthentication, (req, res) => {
 		res.render('form/collect.hbs', {
-				title: 'collect'
+				title: 'collect',
+				user: req.user
 		});
 });
 
-router.post('/', async (req, res) => {
-		const body = _.pick(req.body, ['station', 'store', 'link', 'num', 'time', 'minute', 'comment']);
+router.post('/', checkAuthentication, async (req, res) => {
+		const body = _.pick(req.body, ['user', 'station', 'store', 'link', 'num', 'time', 'minute', 'comment']);
 		let collect = new Collect(body);
 		await collect.save().then(collect => {
 				res.redirect(302, "/find");

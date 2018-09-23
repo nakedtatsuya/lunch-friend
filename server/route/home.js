@@ -6,7 +6,7 @@ let User = require('../models/user');
 router.get('/', (req, res) => {
 		res.render('home',{
 				title: 'HOME PAGE',
-				user: 'test',
+				user: req.user,
 				err: req.flash('err')[0],
             	Flag_Signin: req.flash('Flag_Signin')[0],
 		});

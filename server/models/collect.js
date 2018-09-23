@@ -3,9 +3,10 @@ let moment = require('moment');
 const now = moment();
 
 let CollectSchema = new mongoose.Schema({
-		_user_id: {
+		user: {
 				type: mongoose.Schema.Types.ObjectId,
-				required: false
+				required: true,
+				ref: 'User'
 		},
 		station: {
 				type: String,
@@ -15,7 +16,7 @@ let CollectSchema = new mongoose.Schema({
 				type: String,
 				required: true
 		},
-link: {
+  link: {
 				type: String,
 		  required: true
 		},

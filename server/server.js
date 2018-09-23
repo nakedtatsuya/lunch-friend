@@ -1,5 +1,5 @@
 require('./config/config');
-// require('../gulpfile');
+require('../gulpfile');
 let {mongoose} = require('./db/mongoose');
 const {generateMessage} = require('./config/helper');
 const home = require('./route/home');
@@ -12,7 +12,6 @@ const signup = require('./route/signup');
 const express = require('express');
 const path = require('path');
 let hbs = require('./config/hbs');
-let serverController = require('./controller/serverController');
 let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let flash = require("connect-flash");
@@ -33,16 +32,6 @@ app.use(flash());
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
 
-// ログインされているか判別
-function checkAuthentication(req, res, next) {
-    if (req.isAuthenticated()) {
-        //req.isAuthenticated() will return true if user is logged in
-        next();
-    } else {
-        res.redirect("/login");
-    }
-}
-
 // passport設定
 app.use(session({secret: "some salt", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
@@ -62,7 +51,7 @@ app.use('/collect', collect);
 //募集一覧ページ
 app.use('/find', find);
 
-app.get('/chat', (req, res) => {
+app.get('/chat/:user_id', (req, res) => {
     res.render('chat.hbs', {
         title: "chat"
     });
