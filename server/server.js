@@ -1,29 +1,30 @@
 require('./config/config');
-require('../gulpfile');
-let {mongoose} = require('./db/mongoose');
-const {generateMessage} = require('./config/helper');
+const env = process.env.NODE_ENV || 'development';
+if(env === 'development' || env === 'test'){
+		require('../gulpfile');
+}
+
+require('./db/mongoose');
+//route
 const home = require('./route/home');
 const collect = require('./route/collect');
 const find = require('./route/find');
 const login = require('./route/login');
+const chat = require('./route/chat');
 const logout = require('./route/logout');
 const auth = require('./route/auth');
 const signup = require('./route/signup');
 const express = require('express');
+const {io, app, server} = require('./config/socket');
 const path = require('path');
-let hbs = require('./config/hbs');
-let cookieParser = require("cookie-parser");
-let bodyParser = require("body-parser");
-let flash = require("connect-flash");
-let session = require("express-session");
-let User = require('./models/user');
-const http = require('http');
-let passport = require('./config/passport');
-const socketIO = require('socket.io');
-let app = express();
+const hbs = require('./config/hbs');
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const flash = require("connect-flash");
+const session = require("express-session");
+const passport = require('./config/passport');
 const port = process.env.PORT;
-let server = http.createServer(app);
-let io = socketIO(server);
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -40,6 +41,8 @@ app.use(passport.session());
 app.use('/', home);
 //ログイン
 app.use('/login', login);
+//chat
+app.use('/chat', chat);
 //登録
 app.use('/signup', signup);
 //ログアウト
@@ -51,24 +54,7 @@ app.use('/collect', collect);
 //募集一覧ページ
 app.use('/find', find);
 
-app.get('/chat/:user_id', (req, res) => {
-    res.render('chat.hbs', {
-        title: "chat"
-    });
-});
-
-io.on('connection', (socket) => {
-		console.log('connected!!');
-		socket.on('disconnect', () => {
-				console.log('server disconnected!!');
-		});
-
-		socket.on("createMessage", (message) => {
-				console.log(message);
-				io.emit("newMessage", generateMessage(message.from, message.text));
-		});
-});
-
 server.listen(port, () => {
     console.log(`server start port ${port}`);
 });
+

@@ -1,37 +1,27 @@
 const mongoose = require('mongoose');
-let moment = require('moment');
+const moment = require('moment');
 const now = moment();
 
-let MessageSchema = new mongoose.Schema({
-		_user_id: {
+const MessageSchema = new mongoose.Schema({
+		user: {
 				type: mongoose.Schema.Types.ObjectId,
+				required: true,
+				ref: 'User'
+		},
+		toUser: {
+				type: mongoose.Schema.Types.ObjectId,
+				required: true,
+				ref: 'User'
+		},
+		roomId: {
+				type: String,
 				required: true
 		},
 		message: {
 				type: String,
 				required: true
 		},
-		link: {
-				type: String,
-				required: true
-		},
-		num: {
-				type: Number,
-				required: true
-		},
-		time: {
-				type: String,
-				required: true
-		},
-		minute: {
-				type: String,
-				required: true
-		},
-		comment: {
-				type: String,
-				required: true
-		},
-		created_at: {
+		createdAt: {
 				type: Date,
 				default: now
 		}

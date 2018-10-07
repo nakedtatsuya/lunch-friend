@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-let moment = require('moment');
+const moment = require('moment');
 const now = moment();
 
-let CollectSchema = new mongoose.Schema({
+const CollectSchema = new mongoose.Schema({
 		user: {
 				type: mongoose.Schema.Types.ObjectId,
 				required: true,
@@ -36,7 +36,7 @@ let CollectSchema = new mongoose.Schema({
 				type: String,
 				required: true
 		},
-		created_at: {
+		createdAt: {
 				type: Date,
 				default: now
 		}

@@ -59,6 +59,24 @@
 
 //phone size
 @media (max-width: 767px) {
+  .feed-body {
+    padding: 0!important;
+    h5 {
+      padding-left: 15px!important;
+    }
+    p {
+      padding-left: 20px!important;
+    }
+  }
+
+  .profile-inner-block {
+    margin: auto;
+    grid-column: 1 / 2;
+    border: 5px solid lightgray;
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+  }
 
   .modal-dialog {
     width: auto!important;

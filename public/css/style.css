@@ -235,6 +235,19 @@
   color: #dc3545;
 }
 
+.send-time {
+  color: #6c757d !important;
+  font-size: 6px;
+}
+
+.message div {
+  display: inline-block;
+}
+
+.message-text {
+  background-color: #dedfe0;
+}
+
 button, button:hover {
   border: none;
   color: #fff;
@@ -467,6 +480,23 @@ button:disabled {
 }
 
 @media (max-width: 767px) {
+  .feed-body {
+    padding: 0 !important;
+  }
+  .feed-body h5 {
+    padding-left: 15px !important;
+  }
+  .feed-body p {
+    padding-left: 20px !important;
+  }
+  .profile-inner-block {
+    margin: auto;
+    grid-column: 1 / 2;
+    border: 5px solid lightgray;
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+  }
   .modal-dialog {
     width: auto !important;
     margin: 48px 0.5rem 0.5rem 0.5rem !important;

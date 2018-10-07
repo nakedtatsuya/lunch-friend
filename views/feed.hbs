@@ -6,30 +6,26 @@
             <div class="search-form-block">
                 <form class="form-inline">
                     <div class="search-form">
+                        <a class="p-2 text-muted" href="#">場所</a>
                         <input class="form-control mr-sm-2" type="search" placeholder="キーワード検索" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg></button>
                     </div>
                 </form>
                 <div class="nav-scroller py-1 search-header-block">
-                    <nav class="justify-content-between search-header">
-                        <a class="p-2 text-muted" href="#">時間</a>
-                        <a class="p-2 text-muted" href="#">年齢</a>
-                        <a class="p-2 text-muted" href="#">場所</a>
-                    </nav>
                 </div>
             </div>
             <div class="row">
                 {{#each collects}}
                     <div class="col-md-7 feed-box">
                         <div class="card mb-4 box-shadow feed-inner-box">
-                            <div class="post-minute"><small class="text-muted">{{getPostTime created_at}}</small></div>
+                            <div class="post-minute"><small class="text-muted">{{getPostTime createdAt}}</small></div>
 
                             <div class="feed-head">
                                 <div class="profile-block">
                                     <div class="profile-inner-block">
-                                        <img class="profile-image" src="{{user.i_con}}" />
-                                        <p class="feed-profile">user name...</p>
-                                        <p>職種： user job...</p>
+                                        <img class="profile-image" src="{{user.icon}}" />
+                                        <p class="feed-profile">{{user.name}}</p>
+                                        <p class="feed-profile2">{{user.job}}</p>
                                     </div>
                                 </div>
 
@@ -44,11 +40,14 @@
                             </div>
 
                             <div class="card-body feed-body">
-
                                 <h5>コメント</h5>
                                 <p class="card-text">{{comment}}</p>
                             </div>
-                            <a href="/chat/{{user._id}}" class="btn feed-btn c-round-btn--red">参加</a>
+                            {{#if isSameUser}}
+                            <a href="/chat/{{_id}}" class="btn feed-btn c-round-btn--red">チェック</a>
+                            {{else}}
+                            <a href="/chat/{{_id}}" class="btn feed-btn c-round-btn--red">参加</a>
+                            {{/if}}
                         </div>
                     </div>
                 {{/each}}

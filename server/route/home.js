@@ -1,8 +1,8 @@
-let express = require('express');
-let router = express.Router();
-let passport = require('passport');
-let serverController = require('../controller/serverController');
-let User = require('../models/user');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const serverController = require('../controller/serverController');
+const User = require('../models/user');
 router.get('/', (req, res) => {
 		res.render('home',{
 				title: 'HOME PAGE',

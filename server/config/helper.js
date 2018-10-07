@@ -1,7 +1,8 @@
-const generateMessage = (from, text) => {
+const generateMessage = (from, text, time) => {
 		return {
 				from,
-				text
+				text,
+				time
 		}
 };
 

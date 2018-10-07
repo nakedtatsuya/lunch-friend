@@ -26,4 +26,17 @@ hbs.registerHelper('getPostTime', function (timestamp) {
 		return new hbs.SafeString(postString);
 });
 
+hbs.registerHelper('AutoLink', function (str) {
+		const reg = new RegExp("((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))");
+		return new hbs.SafeString(str.replace(reg, "<a href='$1' target='_blank'>$1</a>"));
+});
+
+
+hbs.registerHelper('getChatTime', function (timestamp) {
+		// 第二引数を省略するとmsを返す
+		const postString = moment(timestamp).format('HH:mm'); // 31579200000
+		return new hbs.SafeString(postString);
+});
+
+
 module.exports = hbs;

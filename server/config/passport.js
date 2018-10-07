@@ -2,7 +2,7 @@ const config = require('./config.json');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const LocalStrategy = require("passport-local").Strategy;
-const User = require('../models/user');
+const {User} = require('../models/user');
 const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/serverController');
 
 // passport が ユーザー情報をシリアライズすると呼び出されます
@@ -65,7 +65,7 @@ passport.use(new GoogleStrategy({
 												uid: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            i_con: profile.photos[0].value,
+            icon: profile.photos[0].value,
             password: pass,
             provider: profile.provider
           });
