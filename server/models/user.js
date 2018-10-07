@@ -1,12 +1,21 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-
+const moment = require('moment');
 const UserSchema = new mongoose.Schema({
+		uid: {
+				type: Number
+		},
 		name: {
 				type: String
 		},
 		age: {
 				type: Number
+		},
+		job: {
+				type: String
+		},
+		profile: {
+				type: String
 		},
 		email: {
 				type: String,
@@ -19,22 +28,24 @@ const UserSchema = new mongoose.Schema({
 						message: '{VALUE} is not a valid email'
 				}
 		},
+		icon: {
+				type: String
+		},
 		password: {
 				type: String,
 				require: true,
 				minlength: 6
 		},
-		tokens: [{
-				access: {
-						type: String,
-						require: true
-				},
-				token: {
-						type: String,
-						require: true
-				}
-		}]
+		provider: {
+				type: String,
+				enum: ['google', 'facebook', 'twitter', 'local']
+		},
+		collects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Collect' }],
+		createdAt: {
+				type: Date,
+				default: moment()
+		}
 });
 
-let User = mongoose.model('User', UserSchema,'User');
-module.exports = User;
+let User = mongoose.model('User', UserSchema);
+module.exports = {User};

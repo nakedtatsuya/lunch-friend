@@ -1,34 +1,37 @@
 require('./config/config');
-require('../gulpfile');
+const env = process.env.NODE_ENV || 'development';
+if(env === 'development' || env === 'test'){
+		require('../gulpfile');
+}
+
+require('./db/mongoose');
+//route
 const home = require('./route/home');
 const collect = require('./route/collect');
 const find = require('./route/find');
+const login = require('./route/login');
+const chat = require('./route/chat');
+const logout = require('./route/logout');
 const auth = require('./route/auth');
-let {mongoose} = require('./db/mongoose');
+const signup = require('./route/signup');
 const express = require('express');
+const {io, app, server} = require('./config/socket');
 const path = require('path');
-let hbs = require('./config/hbs');
-let serverController = require('./controller/serverController');
-let cookieParser = require("cookie-parser");
-let bodyParser = require("body-parser");
-let flash = require("connect-flash");
-let session = require("express-session");
-const http = require('http');
-let passport = require('./config/passport');
-const socketIO = require('socket.io');
-let app = express();
+const hbs = require('./config/hbs');
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const flash = require("connect-flash");
+const session = require("express-session");
+const passport = require('./config/passport');
 const port = process.env.PORT;
-let server = http.createServer(app);
-let io = socketIO(server);
-app.use(bodyParser());
-app.use(cookieParser())
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'hbs');
 app.use(flash());
 //静的フォルダの読み込みにはexpress.staticを使う
 app.use(express.static('public'));
-
 
 // passport設定
 app.use(session({secret: "some salt", resave: true, saveUninitialized: true}));
@@ -38,6 +41,8 @@ app.use(passport.session());
 app.use('/', home);
 //google認証
 app.use('/auth', auth);
+//chat
+app.use('/chat', chat);
 //募集アクション
 app.use('/collect', collect);
 //募集一覧ページ

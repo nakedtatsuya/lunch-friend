@@ -9,7 +9,7 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback',
 		passport.authenticate('google', {
 						failureRedirect: '/',  // 失敗したときの遷移先
-						successRedirect: '/collect',  // 成功したときの遷移先
+						successRedirect: '/',  // 成功したときの遷移先
 						failureFlash: true
 				},
 		));

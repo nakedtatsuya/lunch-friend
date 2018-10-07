@@ -1,18 +1,20 @@
 const config = require('./config.json');
-let passport = require('passport');
-let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-let LocalStrategy = require("passport-local").Strategy;
-let User = require('../models/user');
-let serverController = require('../controller/serverController');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const LocalStrategy = require("passport-local").Strategy;
+const {User} = require('../models/user');
+const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/serverController');
 
 // passport が ユーザー情報をシリアライズすると呼び出されます
 passport.serializeUser(function (user, done) {
-		done(null, user);
+		  done(null, user._id);
 });
 
 // passport が ユーザー情報をデシリアライズすると呼び出されます
-passport.deserializeUser(function (obj, done) {
-		done(null, obj);
+passport.deserializeUser(function (id, done) {
+		User.findById(id, function(err, user) {
+				done(null, user);
+		});
 });
 
 // passport における具体的な認証処理を設定します。
@@ -26,8 +28,8 @@ passport.use(
         process.nextTick(() => {
             console.log(email, "email");
             User.findOne({email: email}, function (error, user) {
-                const pass = serverController.gethash(password);
-                console.log(user, "db_username")
+                const pass = gethash(password);
+                console.log(user, "db_username");
                 if (error) {
                     return done(error);
                 }
@@ -53,14 +55,26 @@ passport.use(new GoogleStrategy({
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
     // ここで profile を確認して結果を返す
-    console.log(req.user);
-    console.log(profile.emails[0].value);
+    console.log(profile);
     User.findOne({email: profile.emails[0].value}, function (error, user) {
         if (error) {
             return done(error);
         }
         if (!user) {
-            return done(null, false, req.flash('err', '登録されていないgoogleアカウントです'), req.flash('Flag_Signin', true));
+										const pass = gethash(profile.id);
+          let newUser = new User({
+												uid: profile.id,
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            icon: profile.photos[0].value,
+            password: pass,
+            provider: profile.provider
+          });
+										newUser.save().then(u => {
+												return done(null, u);
+          });
+										return done(null, newUser);
+            // return done(null, false, req.flash('err', '登録されていないgoogleアカウントです'), req.flash('Flag_Signin', true));
         }
         return done(null, user);
     });
