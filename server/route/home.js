@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const serverController = require('../controller/serverController');
-const User = require('../models/user');
+const {User} = require('../models/user');
 router.get('/', (req, res) => {
 		res.render('home',{
 				title: 'HOME PAGE',
@@ -23,9 +23,7 @@ router.post('/login', passport.authenticate(
 
 router.post('/signup', (req, res) => {
     const pass = serverController.gethash(req.body.password);
-    //console.log(req.body.email);
-    //const hash_mail = serverController.encrypt(req.body.email)
-    //console.log(hash_mail)
+
     let user = new User({name:req.body.username,password:pass,email:req.body.email,age:req.body.age});
     user.save(function(err){
         if(err){
