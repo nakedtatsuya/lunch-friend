@@ -23,7 +23,7 @@ let constraints = {
 				length: {
 						minimum: 1,
 						tooShort: "^参考リンクを入力してください",
-						maximum: 10,
+						maximum: 255,
 						tooLong: "^参考リンクは255文字以内で入力でしてください"
 				}
 		},
