@@ -93,8 +93,10 @@ passport.use(new FacebookStrategy({
 				clientSecret: "4ef115205fa217e4f04384752e519f44",
 				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback"
 		},
-		function(accessToken, refreshToken, profile, done) {
+		function(req, accessToken, refreshToken, profile, done) {
 		  console.log(profile);
+				console.log(accessToken);
+				console.log(refreshToken);
     return done(null, profile);
 		}
 ));

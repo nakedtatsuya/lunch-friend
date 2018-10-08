@@ -4,9 +4,7 @@ let passport = require('../config/passport');
 router.get('/google', passport.authenticate('google', {
 		scope: ['profile','email']
 }));
-router.get('/facebook', passport.authenticate('facebook', {
-		scope: ['email', 'public_profile']
-}));
+router.get('/facebook', passport.authenticate('facebook'));
 
 //google認証後callback先
 router.get('/google/callback',
