@@ -5,7 +5,7 @@ router.get('/google', passport.authenticate('google', {
 		scope: ['profile','email']
 }));
 router.get('/facebook', passport.authenticate('facebook', {
-		scope: ['email', 'user_photos', 'user_birthday']
+		scope: ['email', 'public_profile']
 }));
 
 //google認証後callback先
