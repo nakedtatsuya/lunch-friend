@@ -29,7 +29,6 @@ passport.use(
         passReqToCallback: true
     }, function (req, email, password, done) {
         process.nextTick(() => {
-            console.log(email, "email");
             User.findOne({email: email}, function (error, user) {
                 const pass = gethash(password);
                 console.log(user, "db_username");
@@ -57,8 +56,6 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_API_CALLBACK,
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
-    // ここで profile を確認して結果を返す
-    console.log(profile);
     User.findOne({email: profile.emails[0].value}, function (error, user) {
         if (error) {
             return done(error);
@@ -91,7 +88,6 @@ passport.use(new FacebookStrategy({
 				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl', 'displayName']
 		},
 		function(req, accessToken, refreshToken, profile, done) {
-		  console.log(profile);
 				User.findOne({email: profile.emails[0].value}, function (error, user) {
 						if (error) {
 								return done(error);
@@ -115,7 +111,5 @@ passport.use(new FacebookStrategy({
 				});
 		}
 ));
-
-
 
 module.exports = passport;
