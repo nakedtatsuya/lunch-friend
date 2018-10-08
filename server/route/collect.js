@@ -42,7 +42,8 @@ router.post('/', checkAuthentication, async (req, res) => {
 						timeValue: body.ticollectme,
 						minuteValue: body.minute,
 						commentValue: body.comment,
-						validClass: "was-validated"
+						validClass: "was-validated",
+						user: req.user
 				});
 		});
 });

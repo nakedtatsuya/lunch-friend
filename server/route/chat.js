@@ -22,7 +22,8 @@ router.get('/:id', checkAuthentication, async (req, res) => {
 				title: "chat",
 				me: req.user,
 				you,
-				messages
+				messages,
+				user: req.user
 		});
 });
 

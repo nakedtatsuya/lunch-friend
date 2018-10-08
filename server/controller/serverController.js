@@ -8,7 +8,7 @@ const checkAuthentication = function(req,res,next){
         //req.isAuthenticated() will return true if user is logged in
         next();
     } else{
-        res.redirect("/login");
+        res.redirect("/");
     }
 };
 

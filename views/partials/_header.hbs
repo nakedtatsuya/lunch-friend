@@ -3,16 +3,23 @@
         <a href="/" class="logo">Lunch Friends</a>
     </div>
     <ul class="header-right">
+        {{#if user}}
+        <li>
+            <a class="header-btn header-login-btn" href="/logout">ログアウト</a>
+        </li>
+        {{else}}
         <li>
             <button type="button" class="header-btn header-login-btn" data-toggle="modal" data-target="#loginModal">ログイン</button>
         </li>
         <li>
             <button type="button" class="header-btn header-sign-up-btn" data-toggle="modal" data-target="#signupModal">登録</button>
         </li>
+        {{/if}}
         <!-- Button trigger modal -->
         <li>
             <a class="header-btn header-twitter" href="https://twitter.com/@ingtaTsuya_0801" target="_blank">Twitterフォロー</a>
         </li>
+
         <li>
             <a class="header-btn header-twitter-icon" href="https://twitter.com/@ingtaTsuya_0801" target="_blank"><i class="fab fa-twitter"></i></a>
         </li>
