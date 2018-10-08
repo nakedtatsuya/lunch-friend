@@ -91,7 +91,9 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
 				clientID: "299272917316307",
 				clientSecret: "4ef115205fa217e4f04384752e519f44",
-				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback"
+				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback",
+				passReqToCallback : true,
+				profileFields: ['id', 'emails', 'name']
 		},
 		function(req, accessToken, refreshToken, profile, done) {
 		  console.log(profile);
