@@ -10,8 +10,8 @@
     "JWT_SECRET": "dfjiorroijgrijgmvlfoi4"
   },
   "googleAPI": {
-    "clientID": "1063774193886-2l96vdfuo7eqrnd5hupi221sss55gscb.apps.googleusercontent.com",
-    "clientSecret": "ARraBEvUUrUSyCtdX_eDRAuR",
+    "clientID": "1065714502053-bh3aeo833ghovgak304538cqhvvi95g1.apps.googleusercontent.com",
+    "clientSecret": "7uJT6rAJq4pfXAv7j5GfRwaT",
     "callbackURL": "http://localhost:4000/auth/google/callback"
   },
   "key": "secretKey"
