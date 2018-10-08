@@ -10,14 +10,18 @@ const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/
 
 // passport が ユーザー情報をシリアライズすると呼び出されます
 passport.serializeUser(function (user, done) {
-		  done(null, user._id);
+		  console.log(user);
+		  done(null, user)
+		  //done(null, user._id);
 });
 
 // passport が ユーザー情報をデシリアライズすると呼び出されます
 passport.deserializeUser(function (id, done) {
-		User.findById(id, function(err, user) {
-				done(null, user);
-		});
+		// User.findById(id, function(err, user) {
+		// 		done(null, user);
+		// });
+		console.log(id);
+		done(null, id)
 });
 
 // passport における具体的な認証処理を設定します。
