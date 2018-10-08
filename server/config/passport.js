@@ -49,9 +49,9 @@ passport.use(
 
 
 passport.use(new GoogleStrategy({
-    clientID: config.googleAPI.clientID,
-    clientSecret: config.googleAPI.clientSecret,
-    callbackURL: config.googleAPI.callbackURL,
+    clientID: process.env.GOOGLE_API_ID,
+    clientSecret: process.env.GOOGLE_API_SECRET,
+    callbackURL: process.env.GOOGLE_API_CALLBACK,
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
     // ここで profile を確認して結果を返す

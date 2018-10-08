@@ -2,17 +2,14 @@
   "test": {
     "PORT": 3000,
     "MONGODB_URI": "mongodb://localhost:27017/LunchAppTest",
-    "JWT_SECRET": "dfjiorroijgrijgmvlfoi3"
+    "JWT_SECRET": "dfjiorroijgrijgmvlfoi3",
+    "GOOGLE_API_CALLBACK": "http://localhost:4000/auth/google/callback"
   },
   "development": {
     "PORT": 3000,
     "MONGODB_URI": "mongodb://localhost:27017/LunchApp",
-    "JWT_SECRET": "dfjiorroijgrijgmvlfoi4"
-  },
-  "googleAPI": {
-    "clientID": "1065714502053-bh3aeo833ghovgak304538cqhvvi95g1.apps.googleusercontent.com",
-    "clientSecret": "7uJT6rAJq4pfXAv7j5GfRwaT",
-    "callbackURL": "http://localhost:4000/auth/google/callback"
+    "JWT_SECRET": "dfjiorroijgrijgmvlfoi4",
+    "GOOGLE_API_CALLBACK": "http://localhost:4000/auth/google/callback"
   },
   "key": "secretKey"
 }
