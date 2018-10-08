@@ -10,18 +10,14 @@ const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/
 
 // passport が ユーザー情報をシリアライズすると呼び出されます
 passport.serializeUser(function (user, done) {
-		  console.log(user);
-		  done(null, user)
-		  //done(null, user._id);
+		  done(null, user._id);
 });
 
 // passport が ユーザー情報をデシリアライズすると呼び出されます
 passport.deserializeUser(function (id, done) {
-		// User.findById(id, function(err, user) {
-		// 		done(null, user);
-		// });
-		console.log(id);
-		done(null, id)
+		User.findById(id, function(err, user) {
+				done(null, user);
+		});
 });
 
 // passport における具体的な認証処理を設定します。
@@ -81,7 +77,6 @@ passport.use(new GoogleStrategy({
 												return done(null, u);
           });
 										return done(null, newUser);
-            // return done(null, false, req.flash('err', '登録されていないgoogleアカウントです'), req.flash('Flag_Signin', true));
         }
         return done(null, user);
     });
@@ -93,11 +88,31 @@ passport.use(new FacebookStrategy({
 				clientSecret: "4ef115205fa217e4f04384752e519f44",
 				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback",
 				passReqToCallback : true,
-				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl']
+				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl', 'displayName']
 		},
 		function(req, accessToken, refreshToken, profile, done) {
 		  console.log(profile);
-    return done(null, profile);
+				User.findOne({email: profile.emails[0].value}, function (error, user) {
+						if (error) {
+								return done(error);
+						}
+						if (!user) {
+								const pass = gethash(profile.id);
+								let newUser = new User({
+										uid: profile.id,
+										name: profile.displayName,
+										email: profile.emails[0].value,
+										icon: profile.photos[0].value,
+										password: pass,
+										provider: profile.provider
+								});
+								newUser.save().then(u => {
+										return done(null, u);
+								});
+								return done(null, newUser);
+						}
+						return done(null, user);
+				});
 		}
 ));
 
