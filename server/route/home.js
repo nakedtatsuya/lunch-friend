@@ -12,6 +12,11 @@ router.get('/', (req, res) => {
 		});
 });
 
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
 //ログイン
 router.post('/login', passport.authenticate(
     'local-login', {

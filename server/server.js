@@ -39,16 +39,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', home);
-//ログイン
-app.use('/login', login);
-//chat
-app.use('/chat', chat);
-//登録
-app.use('/signup', signup);
-//ログアウト
-app.use('/logout', logout);
 //google認証
 app.use('/auth', auth);
+//chat
+app.use('/chat', chat);
 //募集アクション
 app.use('/collect', collect);
 //募集一覧ページ
@@ -57,4 +51,3 @@ app.use('/find', find);
 server.listen(port, () => {
     console.log(`server start port ${port}`);
 });
-

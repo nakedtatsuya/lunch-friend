@@ -51,8 +51,9 @@ passport.use(
 passport.use(new GoogleStrategy({
     clientID: config.googleAPI.clientID,
     clientSecret: config.googleAPI.clientSecret,
-    callbackURL: config.googleAPI.callbackURL
-}, function (req, refreshToken, profile, done) {
+    callbackURL: config.googleAPI.callbackURL,
+    passReqToCallback : true
+}, function (req,accessToken,refreshToken, profile, done) {
     // ここで profile を確認して結果を返す
     console.log(profile);
     User.findOne({email: profile.emails[0].value}, function (error, user) {
