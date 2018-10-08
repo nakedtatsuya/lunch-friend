@@ -4,10 +4,22 @@ let passport = require('../config/passport');
 router.get('/google', passport.authenticate('google', {
 		scope: ['profile','email']
 }));
+router.get('/facebook', passport.authenticate('facebook', {
+		scope: ['email', 'user_photos', 'user_birthday']
+}));
 
 //google認証後callback先
 router.get('/google/callback',
 		passport.authenticate('google', {
+						failureRedirect: '/',  // 失敗したときの遷移先
+						successRedirect: '/',  // 成功したときの遷移先
+						failureFlash: true
+				},
+		));
+
+//facebook認証後callback先
+router.get('/facebook/callback',
+		passport.authenticate('facebook', {
 						failureRedirect: '/',  // 失敗したときの遷移先
 						successRedirect: '/',  // 成功したときの遷移先
 						failureFlash: true

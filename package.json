@@ -28,8 +28,10 @@
     "mongoose": "^5.2.6",
     "node-sass": "^4.9.2",
     "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "socket.io": "^2.1.1",
     "validate.js": "^0.12.0",
     "validator": "^10.7.1"

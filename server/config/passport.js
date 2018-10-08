@@ -1,6 +1,9 @@
 const config = require('./config.json');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+
 const LocalStrategy = require("passport-local").Strategy;
 const {User} = require('../models/user');
 const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/serverController');
@@ -79,5 +82,19 @@ passport.use(new GoogleStrategy({
         return done(null, user);
     });
 }));
+
+
+passport.use(new FacebookStrategy({
+				clientID: "299272917316307",
+				clientSecret: "4ef115205fa217e4f04384752e519f44",
+				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback"
+		},
+		function(accessToken, refreshToken, profile, done) {
+		  console.log(profile);
+    return done(null, profile);
+		}
+));
+
+
 
 module.exports = passport;
