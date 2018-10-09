@@ -7,7 +7,6 @@ router.get('/', checkAuthentication, async (req, res) => {
 		const collects = await Collect.find().populate('user').sort( { _id: -1 });
 		if(collects) {
 				collects.forEach(collect => {
-						console.log(collect);
 						if(collect.user._id.equals(req.user._id)) {
 								collect.isSameUser = true;
 						}else {

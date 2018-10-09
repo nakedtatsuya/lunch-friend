@@ -56,6 +56,9 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_API_CALLBACK,
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
+			console.log(accessToken);
+
+
     User.findOne({email: profile.emails[0].value}, function (error, user) {
         if (error) {
             return done(error);
@@ -88,6 +91,7 @@ passport.use(new FacebookStrategy({
 				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl', 'displayName']
 		},
 		function(req, accessToken, refreshToken, profile, done) {
+				console.log(accessToken);
 				User.findOne({email: profile.emails[0].value}, function (error, user) {
 						if (error) {
 								return done(error);
@@ -111,5 +115,38 @@ passport.use(new FacebookStrategy({
 				});
 		}
 ));
+//
+//
+// passport.use(new TwitterStrategy({
+// 		clientID: process.env.GOOGLE_API_ID,
+// 		clientSecret: process.env.GOOGLE_API_SECRET,
+// 		callbackURL: process.env.GOOGLE_API_CALLBACK,
+// 		passReqToCallback : true
+// }, function (req,accessToken,refreshToken, profile, done) {
+//
+//
+// 		User.findOne({email: profile.emails[0].value}, function (error, user) {
+// 				if (error) {
+// 						return done(error);
+// 				}
+// 				if (!user) {
+// 						const pass = gethash(profile.id);
+// 						let newUser = new User({
+// 								uid: profile.id,
+// 								name: profile.displayName,
+// 								email: profile.emails[0].value,
+// 								icon: profile.photos[0].value,
+// 								password: pass,
+// 								provider: profile.provider
+// 						});
+// 						newUser.save().then(u => {
+// 								return done(null, u);
+// 						});
+// 						return done(null, newUser);
+// 				}
+// 				return done(null, user);
+// 		});
+// }));
+
 
 module.exports = passport;
