@@ -2,7 +2,12 @@ let express = require('express');
 let router = express.Router();
 let passport = require('../config/passport');
 router.get('/google', passport.authenticate('google', {
-		scope: ['profile','email']
+		scope: [
+				'https://www.googleapis.com/auth/user.addresses.read',
+				'email',
+				'https://www.googleapis.com/auth/user.phonenumbers.read',
+				'https://www.googleapis.com/auth/userinfo.profile'
+		]
 }));
 router.get('/facebook', passport.authenticate('facebook', {
 		scope: ['email', 'public_profile']

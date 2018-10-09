@@ -66,11 +66,12 @@ passport.use(new GoogleStrategy({
         }
         if (!user) {
 										const pass = gethash(profile.id);
+										const icon = profile.photos[0].value.replace('?sz=50', '?sz=240');
           let newUser = new User({
 												uid: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            icon: profile.photos[0].value,
+            icon: icon,
             password: pass,
             provider: profile.provider
           });
