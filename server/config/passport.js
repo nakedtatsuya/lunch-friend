@@ -56,7 +56,8 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_API_CALLBACK,
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
-			console.log(accessToken);
+		console.log(accessToken);
+		console.log(profile);
 
 
     User.findOne({email: profile.emails[0].value}, function (error, user) {
@@ -103,7 +104,7 @@ passport.use(new FacebookStrategy({
 										uid: profile.id,
 										name: profile.displayName,
 										email: profile.emails[0].value,
-										icon: profile.photos[0].value,
+										icon: `http://graph.facebook.com/${profile.id}/picture?type=large`,
 										password: pass,
 										provider: profile.provider
 								});
