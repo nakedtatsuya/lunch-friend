@@ -6,7 +6,8 @@ router.get('/google', passport.authenticate('google', {
 				'https://www.googleapis.com/auth/user.addresses.read',
 				'email',
 				'https://www.googleapis.com/auth/user.phonenumbers.read',
-				'https://www.googleapis.com/auth/userinfo.profile'
+				'https://www.googleapis.com/auth/userinfo.profile',
+				'https://www.googleapis.com/auth/user.birthday.read'
 		]
 }));
 router.get('/facebook', passport.authenticate('facebook', {
