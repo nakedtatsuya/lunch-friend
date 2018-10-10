@@ -1,6 +1,9 @@
 const config = require('./config.json');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+
 const LocalStrategy = require("passport-local").Strategy;
 const {User} = require('../models/user');
 const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/serverController');
@@ -26,7 +29,6 @@ passport.use(
         passReqToCallback: true
     }, function (req, email, password, done) {
         process.nextTick(() => {
-            console.log(email, "email");
             User.findOne({email: email}, function (error, user) {
                 const pass = gethash(password);
                 console.log(user, "db_username");
@@ -49,24 +51,28 @@ passport.use(
 
 
 passport.use(new GoogleStrategy({
-    clientID: config.googleAPI.clientID,
-    clientSecret: config.googleAPI.clientSecret,
-    callbackURL: config.googleAPI.callbackURL,
+    clientID: process.env.GOOGLE_API_ID,
+    clientSecret: process.env.GOOGLE_API_SECRET,
+    callbackURL: process.env.GOOGLE_API_CALLBACK,
     passReqToCallback : true
 }, function (req,accessToken,refreshToken, profile, done) {
-    // ここで profile を確認して結果を返す
-    console.log(profile);
+		console.log(accessToken);
+		console.log(req);
+		console.log(profile);
+
+
     User.findOne({email: profile.emails[0].value}, function (error, user) {
         if (error) {
             return done(error);
         }
         if (!user) {
 										const pass = gethash(profile.id);
+										const icon = profile.photos[0].value.replace('?sz=50', '?sz=240');
           let newUser = new User({
 												uid: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            icon: profile.photos[0].value,
+            icon: icon,
             password: pass,
             provider: profile.provider
           });
@@ -74,10 +80,78 @@ passport.use(new GoogleStrategy({
 												return done(null, u);
           });
 										return done(null, newUser);
-            // return done(null, false, req.flash('err', '登録されていないgoogleアカウントです'), req.flash('Flag_Signin', true));
         }
         return done(null, user);
     });
 }));
+
+
+passport.use(new FacebookStrategy({
+				clientID: "299272917316307",
+				clientSecret: "4ef115205fa217e4f04384752e519f44",
+				callbackURL: "https://secure-lake-52622.herokuapp.com/auth/facebook/callback",
+				passReqToCallback : true,
+				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl', 'displayName']
+		},
+		function(req, accessToken, refreshToken, profile, done) {
+				console.log(accessToken);
+				console.log(profile);
+				User.findOne({email: profile.emails[0].value}, function (error, user) {
+						if (error) {
+								return done(error);
+						}
+						if (!user) {
+								const pass = gethash(profile.id);
+								let newUser = new User({
+										uid: profile.id,
+										name: profile.displayName,
+										email: profile.emails[0].value,
+										icon: `http://graph.facebook.com/${profile.id}/picture?type=large`,
+										password: pass,
+										provider: profile.provider
+								});
+								newUser.save().then(u => {
+										return done(null, u);
+								});
+								return done(null, newUser);
+						}
+						return done(null, user);
+				});
+		}
+));
+
+
+passport.use(new TwitterStrategy({
+		consumerKey: "3gfh3fmgD0CfB9QkxcLp9bog8",
+		consumerSecret: "D0ySIn5nFupRcQNEFOZnWlcsJ0MeKw1PtFF26usKOesLb1vbvh",
+		callbackURL: "http://localhost:4000/auth/twitter/callback",
+		includeEmail: true
+}, function (req,accessToken,refreshToken, profile, done) {
+
+		console.log(profile);
+		const icon = profile.photos[0].value.replace('_normal', '');
+		User.findOne({email: profile.emails[0].value}, function (error, user) {
+				if (error) {
+						return done(error);
+				}
+				if (!user) {
+						const pass = gethash(profile.id);
+						let newUser = new User({
+								uid: profile.id,
+								name: profile.displayName,
+								email: profile.emails[0].value,
+								icon: icon,
+								password: pass,
+								provider: profile.provider
+						});
+						newUser.save().then(u => {
+								return done(null, u);
+						});
+						return done(null, newUser);
+				}
+				return done(null, user);
+		});
+}));
+
 
 module.exports = passport;

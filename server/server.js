@@ -2,6 +2,7 @@ require('./config/config');
 const env = process.env.NODE_ENV || 'development';
 if(env === 'development' || env === 'test'){
 		require('../gulpfile');
+		require('dotenv').config();
 }
 
 require('./db/mongoose');
@@ -47,4 +48,5 @@ app.use('/find', find);
 
 server.listen(port, () => {
     console.log(`server start port ${port}`);
+		console.log(process.env);
 });
