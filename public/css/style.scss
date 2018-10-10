@@ -57,7 +57,13 @@ label {
 }
 
 .form-submit {
-  float: right;
+  color: #ffffff;
+  display: block!important;
+  margin: 0 auto;
+  background-color: rgba(0, 123, 255, 1)!important;
+  &:hover {
+    background-color: rgba(0, 123, 255, 0.8)!important;
+  }
 }
 
 .section-title {

@@ -119,38 +119,39 @@ passport.use(new FacebookStrategy({
 				});
 		}
 ));
-//
-//
-// passport.use(new TwitterStrategy({
-// 		clientID: process.env.GOOGLE_API_ID,
-// 		clientSecret: process.env.GOOGLE_API_SECRET,
-// 		callbackURL: process.env.GOOGLE_API_CALLBACK,
-// 		passReqToCallback : true
-// }, function (req,accessToken,refreshToken, profile, done) {
-//
-//
-// 		User.findOne({email: profile.emails[0].value}, function (error, user) {
-// 				if (error) {
-// 						return done(error);
-// 				}
-// 				if (!user) {
-// 						const pass = gethash(profile.id);
-// 						let newUser = new User({
-// 								uid: profile.id,
-// 								name: profile.displayName,
-// 								email: profile.emails[0].value,
-// 								icon: profile.photos[0].value,
-// 								password: pass,
-// 								provider: profile.provider
-// 						});
-// 						newUser.save().then(u => {
-// 								return done(null, u);
-// 						});
-// 						return done(null, newUser);
-// 				}
-// 				return done(null, user);
-// 		});
-// }));
+
+
+passport.use(new TwitterStrategy({
+		consumerKey: "3gfh3fmgD0CfB9QkxcLp9bog8",
+		consumerSecret: "D0ySIn5nFupRcQNEFOZnWlcsJ0MeKw1PtFF26usKOesLb1vbvh",
+		callbackURL: "http://localhost:4000/auth/twitter/callback",
+		includeEmail: true
+}, function (req,accessToken,refreshToken, profile, done) {
+
+		console.log(profile);
+		const icon = profile.photos[0].value.replace('_normal', '');
+		User.findOne({email: profile.emails[0].value}, function (error, user) {
+				if (error) {
+						return done(error);
+				}
+				if (!user) {
+						const pass = gethash(profile.id);
+						let newUser = new User({
+								uid: profile.id,
+								name: profile.displayName,
+								email: profile.emails[0].value,
+								icon: icon,
+								password: pass,
+								provider: profile.provider
+						});
+						newUser.save().then(u => {
+								return done(null, u);
+						});
+						return done(null, newUser);
+				}
+				return done(null, user);
+		});
+}));
 
 
 module.exports = passport;
