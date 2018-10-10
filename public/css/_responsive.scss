@@ -47,6 +47,7 @@
     margin: 0 24px 0 0!important;
     font-size: 28px!important;
     border-radius: 60px!important;
+    color: #ffffff;
   }
   .header-right {
     margin-right: 40px!important;
@@ -55,6 +56,11 @@
   .header-twitter-icon{
     display: none!important;
   }
+
+  .header-btn {
+    border: none!important;
+  }
+
 }
 
 //phone size
@@ -192,6 +198,7 @@
     }
     .header-btn {
       font-size: 14px;
+      border: none!important;
       display: block;
       height: 70px;
       color: #343a40;
