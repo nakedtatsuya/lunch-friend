@@ -1,0 +1,35 @@
+.apply-list-box {
+  width: 100%;
+}
+
+
+.apply-list {
+  width: 90%;
+  display: block;
+  color: #183c61;
+
+  li {
+    width: 100%;
+    display: block;
+    padding: 5px;
+    background-color: white;
+    border-bottom: #183c61;
+    margin: 0 auto;
+    margin-bottom: 4px;
+
+  }
+  img {
+    width: 70px;
+    height: 70px;
+  }
+  .name {
+    font-size: 26px;
+    color: #183c61;
+  }
+  .user-list-box {
+    display: inline-block;
+  }
+  .user-name {
+    text-align: center;
+  }
+}

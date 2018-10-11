@@ -12,6 +12,7 @@ const collect = require('./route/collect');
 const find = require('./route/find');
 const chat = require('./route/chat');
 const auth = require('./route/auth');
+const apply = require('./route/apply');
 const express = require('express');
 const {io, app, server} = require('./config/socket');
 const path = require('path');
@@ -45,6 +46,9 @@ app.use('/chat', chat);
 app.use('/collect', collect);
 //募集一覧ページ
 app.use('/find', find);
+//応募一覧ページ
+app.use('/apply', apply);
+
 
 server.listen(port, () => {
     console.log(`server start port ${port}`);

@@ -39,7 +39,7 @@ socket.on('newMessage', m => {
 		li.innerHTML = `
 							 <li class="message">
         				<div class="message__title">
-            		<img src="${m.from}">
+            		<img src="${m.from}" class="chat-icon">
         				</div>
         				<div class="message__body">
 														<span class="message-text">${AutoLink(m.text)}</span>
@@ -65,7 +65,13 @@ input.addEventListener('input', (e) => {
 
 document.getElementById('message-form').addEventListener('submit', (e) => {
 		const userId = document.getElementById('userId').value;
+
+		//hostではなく相手
 		const youId = document.getElementById('youId').value;
+
+
+
+
 		const roomId = document.getElementById('roomId').value;
 		e.preventDefault();
 		socket.emit('createMessage', generateMessage(userId, input.value, youId, roomId));

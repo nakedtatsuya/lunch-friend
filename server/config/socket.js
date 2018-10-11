@@ -45,7 +45,8 @@ const {generateMessage} = require('./helper');
 								user: user._id,
 								toUser: message.youId,
 								message: message.text,
-								roomId: roomId
+								roomId: roomId,
+								collect: message.roomId
 						});
 
 						newMessage.save().then(m => {

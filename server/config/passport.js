@@ -50,40 +50,35 @@ passport.deserializeUser(function (id, done) {
 // );
 //
 //
-// passport.use(new GoogleStrategy({
-//     clientID: process.env.GOOGLE_API_ID,
-//     clientSecret: process.env.GOOGLE_API_SECRET,
-//     callbackURL: process.env.GOOGLE_API_CALLBACK,
-//     passReqToCallback : true
-// }, function (req,accessToken,refreshToken, profile, done) {
-// 		console.log(accessToken);
-// 		console.log(req);
-// 		console.log(profile);
-//
-//
-//     User.findOne({email: profile.emails[0].value}, function (error, user) {
-//         if (error) {
-//             return done(error);
-//         }
-//         if (!user) {
-// 										const pass = gethash(profile.id);
-// 										const icon = profile.photos[0].value.replace('?sz=50', '?sz=240');
-//           let newUser = new User({
-// 												uid: profile.id,
-//             name: profile.displayName,
-//             email: profile.emails[0].value,
-//             icon: icon,
-//             password: pass,
-//             provider: profile.provider
-//           });
-// 										newUser.save().then(u => {
-// 												return done(null, u);
-//           });
-// 										return done(null, newUser);
-//         }
-//         return done(null, user);
-//     });
-// }));
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_API_ID,
+    clientSecret: process.env.GOOGLE_API_SECRET,
+    callbackURL: process.env.GOOGLE_API_CALLBACK,
+    passReqToCallback : true
+}, function (req,accessToken,refreshToken, profile, done) {
+    User.findOne({email: profile.emails[0].value}, function (error, user) {
+        if (error) {
+            return done(error);
+        }
+        if (!user) {
+										const pass = gethash(profile.id);
+										const icon = profile.photos[0].value.replace('?sz=50', '?sz=240');
+          let newUser = new User({
+												uid: profile.id,
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            icon: icon,
+            password: pass,
+            provider: profile.provider
+          });
+										newUser.save().then(u => {
+												return done(null, u);
+          });
+										return done(null, newUser);
+        }
+        return done(null, user);
+    });
+}));
 
 
 passport.use(new FacebookStrategy({
@@ -94,8 +89,6 @@ passport.use(new FacebookStrategy({
 				profileFields: ['id', 'emails', 'name', 'photos', 'profileUrl', 'displayName']
 		},
 		function(req, accessToken, refreshToken, profile, done) {
-				console.log(accessToken);
-				console.log(profile);
 				User.findOne({email: profile.emails[0].value}, function (error, user) {
 						if (error) {
 								return done(error);
@@ -127,8 +120,6 @@ passport.use(new TwitterStrategy({
 		callbackURL: process.env.TWITTER_API_CALLBACK,
 		includeEmail: true
 }, function (req,accessToken,refreshToken, profile, done) {
-
-		console.log(profile);
 		const icon = profile.photos[0].value.replace('_normal', '');
 		User.findOne({email: profile.emails[0].value}, function (error, user) {
 				if (error) {

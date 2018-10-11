@@ -1,0 +1,33 @@
+{{> _head}}
+{{> _header}}
+<main>
+    <div class="container container-box">
+        <div class="col-md-8 order-md-1 container-form">
+            {{#if isUser}}
+            <h3 class="mb-3 section-title">{{num}}人からメッセージがきています！</h3>
+            {{else}}
+            <h3 class="mb-3 section-title">まだ応募はありません</h3>
+            {{/if}}
+            <div class="apply-list-box">
+                {{#if isUser}}
+                <ul class="apply-list">
+                {{#each users}}
+
+                    <li>
+                        <a href="/chat/{{collectId}}/{{_id}}">
+                            <div>
+                                <div class="user-list-box"><span><img src="{{icon}}"></span></div>
+                                <div class="user-list-box user-name"><span class="name">{{name}}</span></div>
+                            </div>
+                        </a>
+                    </li>
+
+                {{/each}}
+                </ul>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+</main>
+{{> _footer}}

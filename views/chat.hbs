@@ -13,7 +13,7 @@
             {{#each messages}}
             <li class="message">
                 <div class="message__title">
-                    <img src="{{user.icon}}">
+                    <img src="{{user.icon}}" class="chat-icon">
                 </div>
                 <div class="message__body">
                     <span class="message-text">{{AutoLink message}}</span>
@@ -26,7 +26,11 @@
             <form id="message-form">
                 <input type="text" id="message-box" placeholder="Message" name="message" autocomplete="off" contenteditable autofocus/>
                 <input type="hidden" id="userId" name="userId" value="{{me._id}}">
+                {{#if isMyCollector}}
+                <input type="hidden" id="youId" name="youId" value="{{toUserId}}">
+                {{else}}
                 <input type="hidden" id="youId" name="youId" value="{{you.user._id}}">
+                {{/if}}
                 <input type="hidden" id="roomId" name="roomId" value="{{you._id}}">
                 <button id="send-btn" disabled>送信</button>
             </form>
