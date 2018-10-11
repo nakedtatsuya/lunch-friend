@@ -2,3 +2,4 @@ node_modules/
 lunch-friend.iml
 package-lock.json
 .idea
+.env
