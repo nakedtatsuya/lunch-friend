@@ -22,6 +22,44 @@
   text-align: center;
 }
 
+.apply-list-box {
+  width: 100%;
+}
+
+.apply-list {
+  width: 90%;
+  display: block;
+  color: #183c61;
+}
+
+.apply-list li {
+  width: 100%;
+  display: block;
+  padding: 5px;
+  background-color: white;
+  border-bottom: #183c61;
+  margin: 0 auto;
+  margin-bottom: 4px;
+}
+
+.apply-list img {
+  width: 70px;
+  height: 70px;
+}
+
+.apply-list .name {
+  font-size: 26px;
+  color: #183c61;
+}
+
+.apply-list .user-list-box {
+  display: inline-block;
+}
+
+.apply-list .user-name {
+  text-align: center;
+}
+
 .header {
   height: 70px;
   position: fixed;
@@ -275,6 +313,11 @@
 
 .message-text {
   background-color: #dedfe0;
+}
+
+.chat-icon {
+  width: 60px;
+  height: 60px;
 }
 
 #send-btn, #send-btn:hover {

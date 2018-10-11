@@ -13,6 +13,11 @@ const MessageSchema = new mongoose.Schema({
 				required: true,
 				ref: 'User'
 		},
+		collect: {
+				type: mongoose.Schema.Types.ObjectId,
+				required: true,
+				ref: 'Collect'
+		},
 		roomId: {
 				type: String,
 				required: true
