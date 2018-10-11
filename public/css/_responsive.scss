@@ -47,6 +47,7 @@
     margin: 0 24px 0 0!important;
     font-size: 28px!important;
     border-radius: 60px!important;
+    color: #ffffff;
   }
   .header-right {
     margin-right: 40px!important;
@@ -55,10 +56,35 @@
   .header-twitter-icon{
     display: none!important;
   }
+
+  .header-btn {
+    border: none!important;
+  }
+
 }
 
 //phone size
 @media (max-width: 767px) {
+
+  .login-api-btn {
+    font-size: 15px!important;
+    display: block;
+    text-align: center!important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    font-weight: 500 !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    border-radius: 4px !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    margin-bottom: 6px;
+    i {
+      margin-right: 4px;
+    }
+  }
+
+
   .feed-body {
     padding: 0!important;
     h5 {
@@ -172,6 +198,7 @@
     }
     .header-btn {
       font-size: 14px;
+      border: none!important;
       display: block;
       height: 70px;
       color: #343a40;

@@ -5,13 +5,15 @@ const {checkAuthentication, gethash, encrypt, decrypt} = require('../controller/
 
 router.get('/', checkAuthentication, async (req, res) => {
 		const collects = await Collect.find().populate('user').sort( { _id: -1 });
-		collects.forEach(collect => {
-				if(collect.user._id.equals(req.user._id)) {
-						collect.isSameUser = true;
-				}else {
-						collect.isSameUser = false;
-				}
-		});
+		if(collects) {
+				collects.forEach(collect => {
+						if(collect.user._id.equals(req.user._id)) {
+								collect.isSameUser = true;
+						}else {
+								collect.isSameUser = false;
+						}
+				});
+		}
 
 		//console.log(collects);
 		res.render('feed.hbs', {
