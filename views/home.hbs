@@ -7,7 +7,7 @@
             <h1 class="jumbotron-heading home-title">Business Lunch を楽しもう</h1>
             <p class="lead text-muted home-sub-title">いろんな人と話したい人、お昼代を節約したい人、美味しいお店を見つけたい人、お昼の時間を自由に<br>毎日のランチにワクワクを</p>
             <div class="btn-container">
-                {{#if user}}
+                {{#if loginUser}}
                 <a href="/collect" class="btn c-round-btn c-round-btn--blue home-btn">ランチに誘う</a>
                 <a href="/find" class="btn c-round-btn c-round-btn--red home-btn">ランチ仲間を探す</a>
                 {{else}}

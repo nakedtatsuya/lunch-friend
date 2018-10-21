@@ -1,5 +1,5 @@
 const express = require('express');
-var {ObjectID} = require('mongodb');
+const {ObjectID} = require('mongodb');
 const router = express.Router();
 const {User} = require('../models/user');
 const {Message} = require('../models/message');
@@ -34,7 +34,7 @@ router.get('/:id', checkAuthentication, async (req, res) => {
 		let users = [];
 		let isUser;
 		if(applyUsers.length > 0) {
-				for(var i = 0; i < applyUsers.length; i++) {
+				for(let i = 0; i < applyUsers.length; i++) {
 						applyUsers[i].profile[0].hostId = req.user._id;
 						applyUsers[i].profile[0].collectId = req.params.id;
 						users.push(applyUsers[i].profile[0]);
@@ -47,7 +47,7 @@ router.get('/:id', checkAuthentication, async (req, res) => {
 		res.render('apply.hbs', {
 				users,
 				isUser,
-				me: req.user
+				loginUser: req.user
 		});
 });
 
