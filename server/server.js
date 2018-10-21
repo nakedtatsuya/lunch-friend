@@ -13,6 +13,7 @@ const find = require('./route/find');
 const chat = require('./route/chat');
 const auth = require('./route/auth');
 const apply = require('./route/apply');
+const user = require('./route/user');
 const express = require('express');
 const {io, app, server} = require('./config/socket');
 const path = require('path');
@@ -48,6 +49,8 @@ app.use('/collect', collect);
 app.use('/find', find);
 //応募一覧ページ
 app.use('/apply', apply);
+//userページ
+app.use('/user', user);
 
 
 server.listen(port, () => {

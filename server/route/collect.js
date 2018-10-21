@@ -8,7 +8,7 @@ const {Collect} = require('../models/collect');
 router.get('/', checkAuthentication, (req, res) => {
 		res.render('form/collect.hbs', {
 				title: 'collect',
-				user: req.user
+				loginUser: req.user
 		});
 });
 

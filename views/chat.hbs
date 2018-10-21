@@ -25,7 +25,7 @@
         <div class="chat__footer">
             <form id="message-form">
                 <input type="text" id="message-box" placeholder="Message" name="message" autocomplete="off" contenteditable autofocus/>
-                <input type="hidden" id="userId" name="userId" value="{{me._id}}">
+                <input type="hidden" id="userId" name="userId" value="{{loginUser._id}}">
                 {{#if isMyCollector}}
                 <input type="hidden" id="youId" name="youId" value="{{toUserId}}">
                 {{else}}

@@ -20,10 +20,9 @@ router.get('/:id', checkAuthentication, async (req, res) => {
 		const messages = await Message.find({roomId: roomId}).populate('user');
 		res.render('chat.hbs', {
 				title: "chat",
-				me: req.user,
 				you,
 				messages,
-				user: req.user,
+				loginUser: req.user,
 				isMyCollector: false
 		});
 });
@@ -47,7 +46,7 @@ router.get('/:collectId/:userId', checkAuthentication, async (req, res) => {
 		const messages = await Message.find({roomId: roomId}).populate('user');
 		res.render('chat.hbs', {
 				title: "chat",
-				me: req.user,
+				loginUser: req.user,
 				messages,
 				you: collect,
 				toUserId: req.params.userId,

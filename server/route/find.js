@@ -19,7 +19,7 @@ router.get('/', checkAuthentication, async (req, res) => {
 		res.render('feed.hbs', {
 				title: 'feed',
 				collects,
-				user: req.user
+				loginUser: req.user
 		});
 });
 
