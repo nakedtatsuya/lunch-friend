@@ -21,3 +21,64 @@
   margin-top: 64px;
   text-align: center;
 }
+
+//pc size
+
+.header-right {
+  float: right;
+  height: 70px;
+  margin: 0;
+  li {
+    line-height: 70px;
+    list-style: none;
+    float: left;
+    background-color: rgba(0,0,0,0) !important;
+    border-bottom: 1px solid #dee2e6!important;
+    margin-right: 15px;
+    color: #343a40;
+    &:hover {
+      border-bottom: 1px solid #343a40;
+    }
+    button {
+      text-align: center;
+      width: 100% !important;
+
+    }
+  }
+
+}
+
+
+.header-left {
+  height: 70px;
+  float: left;
+  margin-left: 40px;
+  a {
+    font-size: 24px;
+    display: block;
+    height: 70px;
+    line-height: 70px;
+  }
+}
+
+.home-btn {
+  width: 360px!important;
+  display: inline-block!important;
+  height: 100px!important;
+  padding: 28px 1em!important;
+  margin: 0 24px 0 0!important;
+  font-size: 28px!important;
+  border-radius: 60px!important;
+  color: #ffffff;
+}
+.header-right {
+  margin-right: 40px!important;
+}
+
+.header-twitter-icon{
+  display: none!important;
+}
+
+.header-btn {
+  border: none!important;
+}

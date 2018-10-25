@@ -1,16 +1,106 @@
 {{> _head}}
 {{> _header}}
+<main role="main">
+    <div class="container profile-container">
+        <div class="row">
+            <div class="col-lg-8 user-profile-top">
+                <div class="profile-header-block">
+                    <img class="rounded-circle" src="{{user.icon}}" alt="profile image" width="140" height="140">
+                    <div class="d-inline-block profile-header-list-block">
+                        <ul class="profile-header-count-list">
+                            <li>
+                                <p>奢った回数</p>
+                                <p>OO回</p>
+                            </li>
+                            <li>
+                                <p>奢られた回数</p>
+                                <p>OO回</p>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn profile-scout-btn pc">ランチスカウトを送る</a>
+                        <a href="#" class="btn profile-scout-btn sp">スカウト</a>
+                        <h2 class="profile-name">{{user.name}}</h2>
+                        <div>
+                            <ul class="profile-header-status-list">
+                                <li><h4><i class="fas fa-suitcase"></i> エンジニア</h4></li>
+                                <li><h4><i class="fas fa-building"></i> belongs</h4></li>
+                                <li><h4><i class="fas fa-map-marker-alt"></i> location</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<div>
-    <div class="collecting-box">
+                <div class="profile-change-btn-list">
+                    <ul>
+                        <li><a id="profile-btn" class="isActive active">プロフィール</a></li>
+                        <li><a id="lunch-blog-btn" class="isActive">ランチブログ</a></li>
+                    </ul>
+                </div>
+                <div class="profile-body-main-block-container" id="profileOrBlog">
+                    <div id="profile-box">
+                        <div class="status-job">
+                            <h3>どんなことしてる？</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                        <div class="status-school">
+                            <h3>学校トークしちゃおう</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                        <div class="status-school">
+                            <h3>勤務地の紹介</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                        <div class="status-lunch">
+                            <h3>おすすめランチ</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                        <div class="status-lunch">
+                            <h3>こんな話がしたい！</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                    </div>
+                    <div id="blog-box">
+                        <div class="blog1">
+                            <h3>初めてのランチ</h3>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                                cursus magna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    </div>
+            <div class="col-lg-4">
+                <h2 class="now-collect">現在募集中のランチ</h2>
+                <div class="profile-collect-card">
+                    <div class="collect-main-background">
+                        <h3>おでん食べな</h3>
+                        <p>な人: 誰でも！ <br> どんな話: いろんな業界の話が聞けたら嬉しいです！</p>
+                    </div>
+                    <div class="inner-feed-right profile-collect-card-footer">
+                        <a href="#" class="btn feed-btn c-round-btn--red profile-collect-footer-btn">参加</a>
 
-    <div class="profile-box">
-
-    </div>
-
-
-</div>
-
+                        <ul>
+                            <li><h5><i class="fas fa-map-marker-alt"></i></h5><h5>六本木</h5></li>
+                            <li><h5><i class="fas fa-utensils"></i></h5><h5><a href="aaa" target="_blank">串カツ田中</a></h5></li>
+                            <li><h5><i class="fas fa-clock"></i></h5><h5>11:00〜</h5></li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</main>
+<script src="/js/profile.js"></script>
 {{> _footer}}

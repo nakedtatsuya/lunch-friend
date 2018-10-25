@@ -18,7 +18,7 @@ gulp.task('scss', function () {
 
 gulp.task('browsersync', function () {
 		browserSync.init({
-				files: ['./public/css/style.css', 'public/image/*'], // BrowserSyncにまかせるファイル群
+				files: ['./public/css/*', 'public/image/*'], // BrowserSyncにまかせるファイル群
 				proxy: 'http://localhost:3000',  // express の動作するポートにプロキシ
 				port: 4000,  // BrowserSync は 4000 番ポートで起動
 				open: false  // ブラウザ open しない

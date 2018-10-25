@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bbb {
   background-color: #7994a7;
 }
@@ -20,6 +21,67 @@
   height: 98px;
   margin-top: 64px;
   text-align: center;
+}
+
+.header-right {
+  float: right;
+  height: 70px;
+  margin: 0;
+}
+
+.header-right li {
+  line-height: 70px;
+  list-style: none;
+  float: left;
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-bottom: 1px solid #dee2e6 !important;
+  margin-right: 15px;
+  color: #343a40;
+}
+
+.header-right li:hover {
+  border-bottom: 1px solid #343a40;
+}
+
+.header-right li button {
+  text-align: center;
+  width: 100% !important;
+}
+
+.header-left {
+  height: 70px;
+  float: left;
+  margin-left: 40px;
+}
+
+.header-left a {
+  font-size: 24px;
+  display: block;
+  height: 70px;
+  line-height: 70px;
+}
+
+.home-btn {
+  width: 360px !important;
+  display: inline-block !important;
+  height: 100px !important;
+  padding: 28px 1em !important;
+  margin: 0 24px 0 0 !important;
+  font-size: 28px !important;
+  border-radius: 60px !important;
+  color: #ffffff;
+}
+
+.header-right {
+  margin-right: 40px !important;
+}
+
+.header-twitter-icon {
+  display: none !important;
+}
+
+.header-btn {
+  border: none !important;
 }
 
 .apply-list-box {
@@ -114,6 +176,10 @@
   z-index: 999999;
   width: 100%;
   box-shadow: 0 1px 3px rgba(160, 166, 179, 0.3);
+}
+
+.header li {
+  border-bottom: none !important;
 }
 
 .header .header-btn {
@@ -247,6 +313,7 @@
 
 .feed-box {
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .feed-inner-box {
@@ -274,32 +341,47 @@
 }
 
 .post-minute {
-  width: 100%;
-  text-align: right;
-  padding-right: 10px;
-  padding-top: 10px;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  color: #fff !important;
 }
 
 .profile-block {
   width: 100%;
 }
 
-.profile-inner-block {
-  margin: auto;
-  grid-column: 1 / 2;
-  border: 5px solid lightgray;
-  border-radius: 50%;
-  height: 150px;
-  width: 150px;
+.collect-feed-center-container .profile-name-block {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
 }
 
-.profile-inner-block p {
-  line-height: 24px;
+.collect-feed-center-container .profile-name-block p {
+  font-size: 28px;
+  font-weight: 600;
   margin: 0;
 }
 
-.profile-inner-block .feed-profile {
+.collect-feed-center-container .profile-name-block .feed-profile {
+  display: inline-block;
   padding-top: 6px;
+}
+
+.collect-feed-center-container .profile-name-block .feed-profile2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.collect-feed-center-container .profile-inner-block {
+  display: inline-block;
+  margin: 15px 0 0 15px;
+  border: 5px solid lightgray;
+  border-radius: 50%;
+  max-height: 140px;
+  max-width: 140px;
+  height: 35%;
+  width: 35%;
 }
 
 .feed-right {
@@ -547,62 +629,7 @@ h3 {
   }
 }
 
-@media (min-width: 768px) {
-  .header-right {
-    float: right;
-    height: 70px;
-    margin: 0;
-    border-bottom: 1px solid #dee2e6 !important;
-  }
-  .header-right li {
-    line-height: 70px;
-    list-style: none;
-    float: left;
-    background-color: rgba(0, 0, 0, 0) !important;
-    border-bottom: 1px solid #dee2e6 !important;
-    margin-right: 15px;
-    color: #343a40;
-  }
-  .header-right li:hover {
-    border-bottom: 1px solid #343a40;
-  }
-  .header-right li button {
-    text-align: center;
-    width: 100% !important;
-  }
-  .header-left {
-    height: 70px;
-    float: left;
-    margin-left: 40px;
-  }
-  .header-left a {
-    font-size: 24px;
-    display: block;
-    height: 70px;
-    line-height: 70px;
-  }
-  .home-btn {
-    width: 360px !important;
-    display: inline-block !important;
-    height: 100px !important;
-    padding: 28px 1em !important;
-    margin: 0 24px 0 0 !important;
-    font-size: 28px !important;
-    border-radius: 60px !important;
-    color: #ffffff;
-  }
-  .header-right {
-    margin-right: 40px !important;
-  }
-  .header-twitter-icon {
-    display: none !important;
-  }
-  .header-btn {
-    border: none !important;
-  }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 770px) {
   .login-api-btn {
     font-size: 15px !important;
     display: block;
@@ -641,6 +668,26 @@ h3 {
     width: auto !important;
     margin: 48px 0.5rem 0.5rem 0.5rem !important;
   }
+  .home-title {
+    font-size: 30px !important;
+  }
+  .home-sub-title {
+    font-size: 14px !important;
+  }
+  .home-btn {
+    width: 280px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .header-right {
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .header-right .dropdown {
+    top: 20px !important;
+    right: 0 !important;
+  }
   .header-twitter-icon {
     display: block !important;
     background-color: rgba(0, 0, 0, 0) !important;
@@ -649,97 +696,336 @@ h3 {
     display: none !important;
   }
   .home-btn {
-    display: block !important;
-    width: 200px !important;
-    margin: 24px auto !important;
-    position: relative !important;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding: 8px 1em;
-    font-size: 14px;
-    line-height: 24px;
-    vertical-align: top;
-    border: 1px solid transparent;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    height: 40px !important;
-    font-weight: 500;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    cursor: pointer;
-    background-color: #202020;
-    border-color: #202020;
-    border-radius: 40px !important;
-  }
-  .home-title {
-    font-size: 30px !important;
-  }
-  .home-sub-title {
-    font-size: 14px !important;
-  }
-  .header-left {
-    height: 70px;
-    float: left;
-    margin-left: 10px;
-  }
-  .header-left a {
-    display: block;
-    height: 70px;
-    line-height: 70px;
-  }
-  .header-right {
-    float: right;
-    height: 70px;
-    margin: 0 10px 0 0;
-    border-bottom: 1px solid #dee2e6 !important;
-  }
-  .header-right li {
-    line-height: 70px;
-    list-style: none;
-    float: left;
-    background-color: rgba(0, 0, 0, 0) !important;
-    border-bottom: 1px solid #dee2e6 !important;
-    margin-right: 5px;
-    color: #343a40;
-  }
-  .header-right li:hover {
-    border-bottom: 1px solid #343a40;
-  }
-  .header-right li button {
-    text-align: center;
     width: 100% !important;
-    background-color: rgba(0, 0, 0, 0) !important;
+    height: 30% !important;
+    margin-top: 20px !important;
+    line-height: 5px !important;
+    font-size: 24px !important;
   }
-  .header-right .header-btn {
-    font-size: 14px;
-    border: none !important;
-    display: block;
-    height: 70px;
-    color: #343a40;
-    background-color: white;
+}
+
+.profile-container {
+  padding-top: 55px;
+}
+
+.background-gray {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+#blog-box {
+  display: none;
+}
+
+.now-collect {
+  text-align: center;
+  color: #45494B;
+  text-shadow: none;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 6px 4px 6px 4px;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', "ヒラギノ角ゴシック", 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ Pro W3',Roboto, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.profile-collect-card {
+  box-shadow: 0 1px 3px 1px rgba(160, 166, 179, 0.3);
+  background-color: white;
+  padding: 0 0 15px 0;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.profile-collect-card .collect-main-background {
+  background-image: url("/image/lunchIcon.png");
+  background-size: cover;
+  color: #fff;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 7px 15px 7px 15px;
+}
+
+.profile-collect-card .collect-main-background h3 {
+  text-shadow: 0 0 4px #808080;
+  height: 100%;
+  margin-bottom: 15px;
+  padding-top: 30px;
+  font-weight: 600;
+}
+
+.profile-collect-card .collect-main-background p {
+  text-shadow: 0 0 2px #808080;
+  text-align: center;
+}
+
+.profile-collect-card .profile-collect-card-footer {
+  padding: 7px 15px 7px 15px;
+}
+
+.profile-collect-card .profile-collect-card-footer ul {
+  padding: 0;
+  margin: 8px 0 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-collect-card .profile-collect-card-footer ul li {
+  width: 33.3%;
+  float: left;
+  padding-right: 4px;
+}
+
+.profile-collect-card .profile-collect-card-footer ul li h5 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile-collect-card .profile-collect-card-footer ul li a {
+  color: #212529;
+}
+
+.profile-collect-card .profile-collect-card-footer p {
+  padding-top: 12px;
+  font-size: 0.2vh;
+}
+
+.profile-collect-card .profile-collect-footer-btn {
+  display: block !important;
+  margin: 0 auto;
+}
+
+.user-profile-top {
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px 1px rgba(160, 166, 179, 0.3);
+  background-color: white;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.user-profile-top img {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 25px;
+}
+
+.user-profile-top .list-sp {
+  display: none;
+}
+
+.user-profile-top .profile-header-list-block {
+  padding-top: 30px;
+  margin-left: 130px;
+  width: 100%;
+}
+
+.user-profile-top .profile-header-count-list {
+  display: inline-block;
+}
+
+.user-profile-top .profile-header-count-list li {
+  float: left;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.user-profile-top .profile-scout-btn {
+  position: absolute;
+  top: 45px;
+  right: 30px;
+  display: block;
+  background-color: rgba(124, 185, 252, 0.8);
+  color: white !important;
+  height: 40px;
+  box-shadow: #6c757d 0px 1px;
+  min-width: 140px;
+  max-width: 200px;
+  width: 30%;
+}
+
+.user-profile-top .profile-scout-btn:hover {
+  background-color: #7cb9fc;
+}
+
+.user-profile-top .sp {
+  display: none;
+}
+
+.user-profile-top .profile-name {
+  color: #45494B;
+  text-shadow: none;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 0 0 6px 37px;
+  line-height: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', "ヒラギノ角ゴシック", 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ Pro W3',Roboto, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.user-profile-top .profile-header-status-list {
+  margin: 0;
+  width: 100%;
+  height: 55px;
+}
+
+.user-profile-top .profile-header-status-list li {
+  margin: 0 15px;
+  height: 55px;
+  float: left;
+}
+
+.user-profile-top .profile-header-status-list li h4 {
+  margin: 0;
+  height: 100%;
+  line-height: 55px;
+}
+
+.user-profile-top .profile-change-btn-list {
+  width: 100%;
+  height: 55px;
+  padding: 0 40px 0 40px;
+}
+
+.user-profile-top .profile-change-btn-list ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.user-profile-top .profile-change-btn-list ul li {
+  height: 100%;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.user-profile-top .profile-change-btn-list ul li a {
+  display: block;
+  height: 100%;
+  padding: 16px 20px 10px;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+
+.user-profile-top .profile-change-btn-list ul li .active {
+  border-bottom: 2px solid #EF6204;
+  color: #EF6204;
+}
+
+.user-profile-top .profile-body-main-block-container {
+  padding: 30px 45px 0 45px;
+  width: 100%;
+}
+
+.user-profile-top .profile-body-main-block-container div {
+  margin-bottom: 40px;
+}
+
+.user-profile-top .profile-body-main-block-container h3 {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding-top: 0;
+  }
+  .now-collect {
+    padding: 30px 0;
+  }
+  .profile-collect-card {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .profile-header-list-block {
+    padding: 0;
+    margin-left: 0 !important;
+    padding-top: 200px !important;
+  }
+  .profile-header-list-block .profile-header-status-list {
     padding: 0 !important;
   }
-  .header-right .header-btn:hover {
-    border-bottom: 1px solid #343a40;
+  .profile-header-list-block .profile-header-status-list li {
+    width: 33% !important;
+    margin: 0 !important;
+  }
+  .profile-header-list-block .profile-header-status-list li h4 {
+    font-size: 18px;
+  }
+  .profile-header-list-block .pc {
+    display: none;
+  }
+  .profile-header-list-block .sp {
+    display: block;
+    right: 80px;
+  }
+  .profile-header-list-block img {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-header-list-block ul {
+    width: 100%;
+    padding-left: 15px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .profile-header-list-block ul li {
+    margin-top: -10px;
+    font-size: 14px;
+  }
+  .profile-header-list-block ul li p {
+    margin: 0;
+    font-size: 13px;
+  }
+  .profile-header-list-block .profile-name {
+    position: absolute;
+    top: 120px;
+    right: 95px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .sp {
+    right: 30px !important;
+    width: 100px !important;
+  }
+  .profile-header-status-list li h4 {
+    font-size: 14px !important;
+  }
+  .profile-name {
+    top: 120px;
+    right: 50px !important;
+  }
+  .profile-change-btn-list {
+    padding: 0 !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .sp {
+    right: 30px !important;
+    width: 100px !important;
+    min-width: 100px !important;
+  }
+  .profile-name {
+    top: 120px;
+    right: 40px !important;
+    font-size: 22px !important;
+  }
+  .profile-body-main-block-container {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+  .profile-body-main-block-container h3 {
+    font-size: 24px !important;
   }
 }
 
 body {
   color: #7994a7;
-  font-family: "AvenirNext-Regular", "Lato", "Hirago KakuGothic ProN", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans', "ヒラギノ角ゴシック", 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ Pro W3',Roboto, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
   font-size: 0.875rem;
 }
 
