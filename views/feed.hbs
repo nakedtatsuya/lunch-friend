@@ -16,40 +16,38 @@
             </div>
             <div class="row">
                 {{#each collects}}
-                    <div class="col-md-7 feed-box">
-                        <div class="card mb-4 box-shadow feed-inner-box">
-                            <div class="post-minute"><small class="text-muted">{{getPostTime createdAt}}</small></div>
+                <div class="col-md-7 feed-box">
+                    <small class="post-minute">{{getPostTime createdAt}}</small>
+                    <div class="profile-collect-card">
+                        <div class="collect-main-background">
+                            <h3>おでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああおでん食べなあああ</h3>
+                            <p>{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd{{comment}}<br>dwwd</p>
 
-                            <div class="feed-head">
-                                <div class="profile-block">
-                                    <div class="profile-inner-block">
-                                        <img class="profile-image" src="{{user.icon}}" />
-                                        <p class="feed-profile">{{user.name}}</p>
-                                        <p class="feed-profile2">{{user.job}}</p>
-                                    </div>
-                                </div>
-
-                                <div class="feed-right">
-                                    <div class="inner-feed-right">
-                                        <h5><i class="fas fa-map-marker-alt"></i> {{station}}</h5>
-                                        <h5><i class="fas fa-clock"></i> {{time}}:{{minute}}〜</h5>
-                                        <h5><i class="fas fa-flag"></i> {{num}}人</h5>
-                                        <h5><i class="fas fa-utensils"></i> <a href="{{link}}" target="_blank">{{store}}</a></h5>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="collect-feed-center-container">
+                            <div class="profile-inner-block">
+                                <img class="profile-image" src="{{user.icon}}" />
                             </div>
-
-                            <div class="card-body feed-body">
-                                <h5>コメント</h5>
-                                <p class="card-text">{{comment}}</p>
+                            <div class="profile-name-block">
+                                <p class="feed-profile">{{user.name}}</p>
+                                <p class="feed-profile2"><i class="fas fa-suitcase"></i>{{user.job}}</p>
                             </div>
-                            {{#if isSameUser}}
-                            <a href="/apply/{{_id}}" class="btn feed-btn c-round-btn--red">チェック</a>
-                            {{else}}
-                            <a href="/chat/{{_id}}" class="btn feed-btn c-round-btn--red">参加</a>
-                            {{/if}}
+                        </div>
+                        {{#if isSameUser}}
+                        <a href="/apply/{{_id}}" class="btn feed-btn c-round-btn--red profile-collect-footer-btn">チェック</a>
+                        {{else}}
+                        <a href="/chat/{{_id}}" class="btn feed-btn c-round-btn--red profile-collect-footer-btn">参加</a>
+                        {{/if}}
+                        <div class="inner-feed-right profile-collect-card-footer">
+                            <ul>
+                                <li><h5><i class="fas fa-map-marker-alt"></i></h5><h5>{{station}}</h5></li>
+                                <li><h5><i class="fas fa-utensils"></i></h5><h5><a href="aaa" target="_blank">{{store}}</a></h5></li>
+                                <li><h5><i class="fas fa-clock"></i></h5><h5>{{time}}:{{minute}}</h5></li>
+                                <div class="clear"></div>
+                            </ul>
                         </div>
                     </div>
+                </div>
                 {{/each}}
             </div>
         </div>

@@ -34,6 +34,7 @@
 
 .feed-box {
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .feed-inner-box {
@@ -61,31 +62,49 @@
 }
 
 .post-minute {
-  width: 100%;
-  text-align: right;
-  padding-right: 10px;
-  padding-top: 10px;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  color: #fff!important;
 }
 
 .profile-block {
   width: 100%;
 }
+.collect-feed-center-container {
+  .profile-name-block {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    p {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .feed-profile {
+      display: inline-block;
+      padding-top: 6px;
+    }
 
-.profile-inner-block {
-  margin: auto;
-  grid-column: 1 / 2;
-  border: 5px solid lightgray;
-  border-radius: 50%;
-  height: 150px;
-  width: 150px;
-  p {
-    line-height: 24px;
-    margin: 0;
+    .feed-profile2 {
+      font-size: 24px;
+      font-weight: 500;
+    }
   }
-  .feed-profile {
-    padding-top: 6px;
+
+  .profile-inner-block {
+    display: inline-block;
+    margin: 15px 0 0 15px;
+    border: 5px solid lightgray;
+    border-radius: 50%;
+    max-height: 140px;
+    max-width: 140px;
+    height: 35%;
+    width: 35%;
+
   }
 }
+
 
 .feed-right {
   text-align: left;

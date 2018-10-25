@@ -52,7 +52,9 @@
   z-index: 999999;
   width: 100%;
   box-shadow: 0 1px 3px rgba(160,166,179,0.3);
-
+  li {
+    border-bottom: none!important;
+  }
   .header-btn {
     display: block;
     height: 70px;
